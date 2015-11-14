@@ -186,21 +186,36 @@
 //console.log(1);
 /***************************************************************************************************/
 
-var A = function (){};
-A.prototype.b = 100;
-var a = new A();
-A.prototype.c = 101;
-a.c = -100;
-A.prototype = {};
-A.prototype.b = 536;
-console.log(a.__proto__.constructor.prototype.b === 536);
-var b = new A();
-console.log(a.__proto__.__proto__.constructor === a.__proto__.constructor.prototype.constructor);
-console.log(b instanceof A);
-console.log(!(b instanceof Object));
+//var A = function (){};
+//A.prototype.b = 100;
+//var a = new A();
+//A.prototype.c = 101;
+//a.c = -100;
+//A.prototype = {};
+//A.prototype.b = 536;
+//console.log(a.__proto__.constructor.prototype.b === 536);
+//var b = new A();
+//console.log(a.__proto__.__proto__.constructor === a.__proto__.constructor.prototype.constructor);
+//console.log(b instanceof A);
+//console.log(!(b instanceof Object));
 
+/***************************************************************************************************/
+//
+////если hasOwnProperty занят
+//var foo = {
+//    hasOwnProperty: function() { return false; },
+//    bar: 'Да прилетят драконы'
+//};
+//// Используем метод hasOwnProperty пустого объекта
+//// и передаём foo в качестве this
+//({}).hasOwnProperty.call(foo, 'bar'); // true
 
+/***************************************************************************************************/
 
+//var arr = {a: 2, b: 4}; ///!!!!!!!!!!!!!!
+var arr = [1, 2];
 
-
+arr.forEach(function(i, item, array){
+    console.log("i: " + i + " -item: " + item);
+});
 
