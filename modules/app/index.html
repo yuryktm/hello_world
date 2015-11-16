@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<meta charset="utf-8" />
+	<title>AngularJS Start</title>
+	<link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+	<link href="vendor/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+</head>
+<body ng-controller="dayCtrl">
+	<div class="panel">
+		<div class="page-header">
+			<h3>AngularJS App</h3>
+		</div>
+		<h4>Today is {{day}}</h4>
+
+		<h4 dir-myhh="Sunday">Today 2 is {{day}}</h4>
+
+		<div dir-table></div>
+
+	</div>
+
+	<script src="vendor/angular/angular.min.js"></script>
+	<script src="app.js"></script>
+	<script src="dayCtrl.js"></script>
+	<script src="dirHH.js"></script>
+	<script src="table.html"></script>
+</body>
+</html>

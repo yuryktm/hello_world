@@ -1,3 +1,0 @@
-(function(){
-    angular.modal("managementLettersApp",[]);
-})();
