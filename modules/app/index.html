@@ -13,7 +13,9 @@
 		</div>
 		<h4>Today is {{day}}</h4>
 
-		<h4 dir-myhh="Sunday">Today 2 is {{day}}</h4>
+		<h4 dir-myhh="Monday">Today 2 is {{day}}</h4>
+
+		<h4>filter - Today 3 is {{day ||"(unknown)" | dayName}}</h4>
 
 		<div dir-table></div>
 
@@ -21,8 +23,17 @@
 
 	<script src="vendor/angular/angular.min.js"></script>
 	<script src="app.js"></script>
-	<script src="dayCtrl.js"></script>
-	<script src="dirHH.js"></script>
-	<script src="table.html"></script>
+	<script src="common/commonModule.js"></script>
+	<script src="common/filters/commonFiltersModule.js"></script>
+
+
+	<script src="feature/dayCtrl.js"></script>
+	<!--<script src="dirHH.js"></script>-->
+	<script src="feature/table.html"></script>
+	<script src="common/filters/filterDayName.js"></script>
+	<script src="feature/dirHHandFilter.js"></script>
+	<script src="feature/srvDays.js"></script>
+	<script src="common/services/valSrv.js"></script>
+
 </body>
 </html>

@@ -4,18 +4,18 @@
 <script src="app.js"></script>
 
 <!-- common -->
-<script src="common/common-module.js"></script>
+<script src="common/common-commonFiltersModule.js"></script>
 
 <!-- common filters -->
-<script src="common/filters/commonFilters-module.js"></script>
+<script src="common/filters/commonFilters-commonFiltersModule.js"></script>
 <script src="common/filters/dayNamesFilter.js"></script>
 
 <!-- common services -->
-<script src="common/services/commonServices-module.js"></script>
+<script src="common/services/commonServices-commonFiltersModule.js"></script>
 <script src="common/services/nowValueSvc.js"></script>
 
 <!-- feature -->
-<script src="feature/feature-module.js"></script>
+<script src="feature/feature-commonFiltersModule.js"></script>
 <script src="feature/dayCtrl.js"></script>
 <script src="feature/tomorrowCtrl.js"></script>
 <script src="feature/highlight.js"></script>

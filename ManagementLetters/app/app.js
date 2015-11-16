@@ -1,3 +1,8 @@
 (function(){
-    angular.modal("mlApp",[]);
+    angular.modal("managemantLettersApp",
+        [
+            "bodyLetter",
+            "listLetter"
+        ]);
+
 })();
