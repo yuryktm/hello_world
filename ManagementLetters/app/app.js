@@ -1,6 +1,7 @@
 (function(){
-    angular.modal("managemantLettersApp",
+    angular.module("managemantLettersApp",
         [
+            "common",
             "bodyLetter",
             "listLetter"
         ]);

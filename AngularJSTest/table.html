@@ -14,3 +14,10 @@
         </tr>
     </tbody>
 </table>
+
+<div ng-controller="listLetterCtrl">
+    <div ng-repeat="letter in letters">
+        <span ng-model="letter.who"></span>
+        <span ng-model="letter.subject"></span>
+    </div>
+</div>

@@ -1,6 +1,7 @@
-<div ng-controller="listLetterCtrl">
-    <div ng-repeat="letter in letters">
-        <span ng-model="letter.who"></span>
-        <span ng-model="letter.subject"></span>
-    </div>
+<div class="list-group" ng-controller="listLetterCtrl">
+    <a href="#" class="list-group-item" ng-repeat="item in letters">
+        <h4 class="list-group-item-heading">{{item.subject}}</h4>
+        <p class="list-group-item-text">{{item.who}}</p>
+    </a>
 </div>
+

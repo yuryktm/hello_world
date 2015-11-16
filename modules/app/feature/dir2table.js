@@ -9,7 +9,7 @@
         //возвращает конфигурационный объект
         return {
             restrict: "A",         //A -директиву будем использовать как атрибут
-            templateUrl:"table.html"
+            templateUrl:"feature/table.html"
         }
     }
 

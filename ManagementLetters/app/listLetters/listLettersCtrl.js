@@ -1,20 +1,12 @@
 (function(){
     "use strict";
-    angular.modal("listLetter")
+    angular.module("listLetter")
         .controller("listLetterCtrl", listLetterCtrl);
 
-        function listLetterCtrl($scope){
+        function listLetterCtrl($scope, letterServices){
 
-            var letters = [
-                {
-                    who:"zxcv@zxcv.zx",
-                    subject:"zxc",
-                    body:"zxc zxc zxcv"},
-                {
-                    who:"asdf@asdf.sd",
-                    subject:"asdf",
-                    body:"asdf asdf asdf"}];
 
-            $scope.letters = letters;
+            $scope.letters = letterServices.letters;
+           // $scope.letter = "asdfasdf";
         }
 })();

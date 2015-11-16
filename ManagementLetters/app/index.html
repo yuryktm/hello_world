@@ -2,33 +2,54 @@
 <html ng-app="managemantLettersApp">
 <head>
     <meta charset="utf-8" />
-    <title>AngularJS Start</title>
+    <title>Letter Management</title>
     <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="vendor/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container-fluid">
         <div class="row" style="text-align: center">
-           <h1>hjhj</h1>
+           <h1>Letter Management</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-8">
+                <button class="btn btn-default" type="submit">Удалить</button>
+                <button class="btn btn-default" type="submit">Прочитано</button>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-4">
-                <div ></div>
+                <div list-letter-dir></div>
             </div>
-            <div class="col-md-8"></div>
+            <div class="col-md-8">
+                <div body-letter-dir></div>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-8"></div>
-        </div>
-        <!--<div class="row">-->
-          <!--<h3>:)</h3>-->
-        <!--</div>-->
+
     </div>
 
-
     <script src="vendor/angular/angular.min.js"></script>
+
     <script src="app.js"></script>
+    <script src="common/commonModule.js"></script>
+    <script src="common/filters/commonFiltersModule.js"></script>
+    <script src="common/services/commonServicesModule.js"></script>
+    <script src="common/services/lettersSrv.js"></script>
+    <script src="common/services/lettersVal.js"></script>
+
+    <script src="listLetters/listLetterModule.js"></script>
+    <script src="bodyLetter/bodyLetterModule.js"></script>
+
+    <script src="listLetters/listLettersDir.js"></script>
+    <script src="listLetters/listLettersCtrl.js"></script>
+
+    <script src="bodyLetter/bodyLetterDir.js"></script>
+    <script src="bodyLetter/bodyLetterCtrl.js"></script>
+    <!--<script src=""></script>-->
 
 </body>
 </html>
