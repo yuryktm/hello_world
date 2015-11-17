@@ -5,11 +5,20 @@
 
     function headerCtrl($scope, letterServices){
         $scope.removeLetter = function(){
-            letterServices.removeSelectLetter();
+            if(letterServices.existCheckedItems()){
+                letterServices.removeCheckedLetters();
+            }else{
+                letterServices.removeSelectLetter();
+            }
+
         };
 
-        $scope.setReadedProp = function(){
-            letterServices.inversPropertyReaded()
+        $scope.checkReaded = function(){
+            if(letterServices.existCheckedItems()){
+                letterServices.checkItemsReaded();
+            }else{
+                letterServices.checkItemReaded();
+            }
         };
     }
 })();

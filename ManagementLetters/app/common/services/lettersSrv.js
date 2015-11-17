@@ -4,10 +4,10 @@
         .module("commonServices")
         .service("letterServices", letterServices);
 
-    function letterServices(letterVal){
+    function letterServices(lettersValue){
         this.model = {};
-        this.model.letters = letterVal.data.letters;
-        this.model.letter = letterVal.data.letters[0];
+        this.model.letters = lettersValue.data.letters;
+        this.model.letter = lettersValue.data.letters[0];
 
         this.select = function(id){
             var letter;
@@ -26,62 +26,68 @@
             }
         };
 
-        this.inversPropertyReaded = function(id){
-            //for (var j= 0; j < this.letters.length; j++){
-            //    if(this.letters[j].selected){
-            //        this.letters[j].readed = !this.letters[j].readed;
-            //    }
-            //}
+        //check only one letter
+        this.checkItemReaded = function(){
+            for(var i = 0;i < this.model.letters.length;i++)
+            {
+                if(this.model.letters[i].selected === true){
+                    this.model.letters[i].readed = !this.model.letters[i].readed;
+                    break;
+                }
+            }
+        };
 
-            if((typeof id) !== undefined){
-                this.letters.forEach(function(item){
-                    if(item.id === id){
-                        item.readed = !item.readed;
-                    }
-                });
+        //checked all cheked letters
+        this.checkItemsReaded = function() {
+            for(var i = 0;i < this.model.letters.length;i++)
+            {
+                if(this.model.letters[i].checked === true){
+                    this.model.letters[i].readed = true;
+                }
+            }
+        }
+
+        this.existCheckedItems = function(){
+            var result;
+            this.model.letters.forEach(function(item){
+                if(item.checked === true){
+                    result = true;
+                }
+            });
+
+            return result;
+        };
+
+        //removing all cheked letters
+        this.removeCheckedLetters = function(){
+
+            for(var i = 0;i < this.model.letters.length;i++)
+            {
+                if(this.model.letters[i].checked === true){
+                    this.model.letters.splice(i, 1)
+                    i = -1;
+                }
+            }
+
+            if(this.model.letters.length <= 0){
+                this.model.letter = null;
                 return;
             }
 
-            this.letters.forEach(function(item){
+            var selectedExist;
+            this.model.letters.forEach(function(item){
                 if(item.selected){
-                    item.readed = !item.readed;
+                    selectedExist = true;
                 }
             });
-        };
 
-        //this.inversPropertyReaded = function(id){
-        //    this.letters.forEach(function(item){
-        //        if(item.id === id){
-        //            item.readed = !item.readed;
-        //        }
-        //    });
-        //};
+            if(!selectedExist){
+                this.model.letters[0].selected = true
+                this.model.letter = this.model.letters[0];
+            }
+        }
 
-        //this.setReadedProp = function(id, readed){
-        //    this.letters.forEach(function(item){
-        //        if(item.id === id){
-        //            item.readed = readed;
-        //        }
-        //    });
-        //};
-
-
-        //this.removeLetter = function(id){
-        //
-        //    var index;
-        //    for(var i = 0;i < this.letters.length;i++)
-        //    {
-        //        if(this.letters[i].id === id){
-        //            index = i;
-        //            break;
-        //        }
-        //    }
-        //
-        //    if(angular.isNumber(index)){
-        //        this.letters = this.letters.splice(index+1, 1)
-        //    }
-        //};
-
+        //removing only one selected letter
         this.removeSelectLetter = function(){
             var index;
             for(var i = 0;i < this.model.letters.length;i++)
@@ -94,8 +100,15 @@
 
             if(angular.isNumber(index)){
                 this.model.letters.splice(index, 1)
+
+                if(this.model.letters.length > 0){
+                    this.model.letters[0].selected = true
+                    this.model.letter = this.model.letters[0];
+                }
+                else{
+                    this.model.letter = null;
+                }
             }
         };
     }
-
 })();

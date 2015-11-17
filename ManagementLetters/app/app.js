@@ -6,5 +6,4 @@
             "listLetter",
             "headerModule"
         ]);
-
 })();

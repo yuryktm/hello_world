@@ -11,7 +11,6 @@
                     break;
                 }
             }
-
             return input[i];
         };
     }
