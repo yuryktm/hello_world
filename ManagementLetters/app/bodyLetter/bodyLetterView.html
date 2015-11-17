@@ -1,5 +1,9 @@
-<div class="well" ng-controller="bodyLetterCtrl">
-    <h4>WHO: {{model.letter.who}}</h4>
-    <h3>SUBJECT:{{model.letter.subject}}</h3>
-    <p>BODY:{{model.letter.body}}</p>
+<div class="well" ng-controller="bodyLetterCtrl" style="height: 80vh;">
+    <h4>Who: {{model.letter.who}}</h4>
+    <h3>Subject: {{model.letter.subject}}</h3>
+
+    <div class="well" style="height: 65vh;">
+        <p>{{model.letter.body}}</p>
+    </div>
+
 </div>

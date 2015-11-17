@@ -9,7 +9,7 @@
         };
 
         $scope.setReadedProp = function(){
-            letterServices.inversPropertyReaded()// setReadedProp(1, true);
+            letterServices.inversPropertyReaded()
         };
     }
 })();

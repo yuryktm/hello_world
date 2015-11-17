@@ -27,28 +27,43 @@
         };
 
         this.inversPropertyReaded = function(id){
+            //for (var j= 0; j < this.letters.length; j++){
+            //    if(this.letters[j].selected){
+            //        this.letters[j].readed = !this.letters[j].readed;
+            //    }
+            //}
+
+            if((typeof id) !== undefined){
+                this.letters.forEach(function(item){
+                    if(item.id === id){
+                        item.readed = !item.readed;
+                    }
+                });
+                return;
+            }
+
             this.letters.forEach(function(item){
-                if(item.id === id){
+                if(item.selected){
                     item.readed = !item.readed;
                 }
             });
         };
 
-        this.inversPropertyReaded = function(id){
-            this.letters.forEach(function(item){
-                if(item.id === id){
-                    item.readed = !item.readed;
-                }
-            });
-        };
+        //this.inversPropertyReaded = function(id){
+        //    this.letters.forEach(function(item){
+        //        if(item.id === id){
+        //            item.readed = !item.readed;
+        //        }
+        //    });
+        //};
 
-        this.setReadedProp = function(id, readed){
-            this.letters.forEach(function(item){
-                if(item.id === id){
-                    item.readed = readed;
-                }
-            });
-        };
+        //this.setReadedProp = function(id, readed){
+        //    this.letters.forEach(function(item){
+        //        if(item.id === id){
+        //            item.readed = readed;
+        //        }
+        //    });
+        //};
 
 
         //this.removeLetter = function(id){

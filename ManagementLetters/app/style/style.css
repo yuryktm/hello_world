@@ -10,3 +10,8 @@
 .letter-check-box {
     float: right;
 }
+
+.header-list-letter {
+    padding: 0 0 0 5px;
+    margin: 5px;
+}
