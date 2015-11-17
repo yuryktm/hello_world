@@ -1,0 +1,12 @@
+.list-panel-item-component {
+    float: left;
+    margin: 5px;
+}
+
+.not-read-letter {
+    font-weight: bold;
+}
+
+.letter-check-box {
+    float: right;
+}

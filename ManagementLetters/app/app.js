@@ -3,7 +3,8 @@
         [
             "common",
             "bodyLetter",
-            "listLetter"
+            "listLetter",
+            "headerModule"
         ]);
 
 })();

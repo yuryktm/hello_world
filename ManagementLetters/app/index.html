@@ -5,20 +5,20 @@
     <title>Letter Management</title>
     <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="vendor/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="style/style.css" rel="stylesheet">
 </head>
 <body>
     <div class="container-fluid">
         <div class="row" style="text-align: center">
-           <h1>Letter Management</h1>
+           <h1>Управление письмами</h1>
         </div>
 
         <div class="row">
             <div class="col-md-4">
 
             </div>
-            <div class="col-md-8">
-                <button class="btn btn-default" type="submit">Удалить</button>
-                <button class="btn btn-default" type="submit">Прочитано</button>
+            <div class="col-md-8" style="padding: 10px  ">
+                <div header-dir></div>
             </div>
         </div>
         <div class="row">
@@ -40,16 +40,21 @@
     <script src="common/services/commonServicesModule.js"></script>
     <script src="common/services/lettersSrv.js"></script>
     <script src="common/services/lettersVal.js"></script>
+    <script src="common/filters/selectedLetterFilter.js"></script>
 
+    <script src="header/headerModule.js"></script>
     <script src="listLetters/listLetterModule.js"></script>
     <script src="bodyLetter/bodyLetterModule.js"></script>
+
+    <script src="header/headerDir.js"></script>
+    <script src="header/headerCtrl.js"></script>
 
     <script src="listLetters/listLettersDir.js"></script>
     <script src="listLetters/listLettersCtrl.js"></script>
 
     <script src="bodyLetter/bodyLetterDir.js"></script>
     <script src="bodyLetter/bodyLetterCtrl.js"></script>
-    <!--<script src=""></script>-->
+
 
 </body>
 </html>

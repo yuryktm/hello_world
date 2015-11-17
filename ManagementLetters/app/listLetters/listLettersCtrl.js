@@ -4,9 +4,9 @@
         .controller("listLetterCtrl", listLetterCtrl);
 
         function listLetterCtrl($scope, letterServices){
-
-
-            $scope.letters = letterServices.letters;
-           // $scope.letter = "asdfasdf";
+            $scope.model = letterServices.model;
+            $scope.select = function(id){
+                letterServices.select(id);
+            };
         }
 })();

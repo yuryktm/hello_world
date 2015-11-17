@@ -1,7 +1,10 @@
 <div class="list-group" ng-controller="listLetterCtrl">
-    <a href="#" class="list-group-item" ng-repeat="item in letters">
-        <h4 class="list-group-item-heading">{{item.subject}}</h4>
-        <p class="list-group-item-text">{{item.who}}</p>
+    <a href="#" class="list-group-item" ng-repeat="item in model.letters"
+       ng-class="{'active': item.selected}" ng-click="select(item.id);">
+        <h4 class="list-group-item-heading" ng-class="{'not-read-letter': item.readed}">{{item.subject}}</h4>
+        <input class="letter-check-box list-group-item-heading " type="checkbox">
+        <p class="list-group-item-text" ng-class="{'not-read-letter': item.readed}">{{item.who}}</p>
     </a>
 </div>
+
 
