@@ -200,22 +200,39 @@
 //console.log(!(b instanceof Object));
 
 /***************************************************************************************************/
-//
-////если hasOwnProperty занят
-//var foo = {
-//    hasOwnProperty: function() { return false; },
-//    bar: 'Да прилетят драконы'
-//};
-//// Используем метод hasOwnProperty пустого объекта
-//// и передаём foo в качестве this
-//({}).hasOwnProperty.call(foo, 'bar'); // true
+var v = function fff(){
+    var obj = {};
+    return function(){
+        return obj;
+    }
+};
+
+function Builder(){
+
+    var a = {aaa: "aaaa"};
+
+    return {
+        build: function(str){
+            if(str === 'a'){
+                return a;
+            }
+        }
+    }
+}
+
+
+var aa = new Builder().build('a')
 
 /***************************************************************************************************/
+//паттерн модуль
 
-//var arr = {a: 2, b: 4}; ///!!!!!!!!!!!!!!
-var arr = [1, 2];
+var basketModule = (function() {
+    var basket = []; // приватная переменная
+    return { // методы доступные извне
+        addItem: function(values) {
+            basket.push(values);
+        }
+    }
+}());
 
-arr.forEach(function(i, item, array){
-    console.log("i: " + i + " -item: " + item);
-});
 
