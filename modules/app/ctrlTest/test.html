@@ -1,0 +1,13 @@
+<h1>Test HTML - ctrl test</h1>
+<div ng-controller="oneCtrl">
+    <p>{{number}}</p>
+    <button ng-click="updateNumber()">update Number data  from ctrl one -> two</button>
+    <br>
+    <button ng-click="resetNumber()">reset Number oneCtrl</button>
+
+</div>
+
+<div ng-controller="twoCtrl">
+   <p>{{data.number}}</p>
+   <p>Last Date update: {{dateUpdate}}</p>
+</div>
