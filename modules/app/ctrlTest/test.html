@@ -1,5 +1,6 @@
 <h1>Test HTML - ctrl test</h1>
 <div ng-controller="oneCtrl">
+    <h2>One Ctrl</h2>
     <p>{{number}}</p>
     <button ng-click="updateNumber()">update Number data  from ctrl one -> two</button>
     <br>
@@ -7,7 +8,11 @@
 
 </div>
 
-<div ng-controller="twoCtrl">
+<div id="angularTwo" ng-controller="twoCtrl">
+   <h2>Two Ctrl</h2>
    <p>{{data.number}}</p>
    <p>Last Date update: {{dateUpdate}}</p>
+   <button onclick="clikBtn()">click</button>
+
 </div>
+

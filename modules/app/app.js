@@ -1,6 +1,6 @@
 (function(){
     "use strict";
-    angular.module("app", ["common","ctrlTestModule"])
+    angular.module("app", ["common", "ctrlTestModule", "srvTestModule"])
         .config(appConfig)
         .run(appRun);
 

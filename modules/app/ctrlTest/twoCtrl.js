@@ -10,10 +10,17 @@
             $scope.data[args.type] = args.value;
         });
 
-        //следит за изменением
+        //отслеживание изменений на скоупе
+        //$scope.$watchCollection()
+        //$scope.$watchGroup()
         $scope.$watch("data.number", function(newVal, oldVal){
             $scope.dateUpdate = Date();
         });
+
+
+        $scope.clickBtnTwoCtrl = function(){
+            alert("clickBtnTwoCtrl");
+        };
     }
 
 })();

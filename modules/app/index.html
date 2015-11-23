@@ -18,16 +18,26 @@
 		<h4>filter - Today 3 is {{day ||"(unknown)" | dayName}}</h4>
 
 		<div dir-table></div>
-
-		<div ng-include="'ctrlTest/test.html'"></div>
-
 	</div>
+
+	<!--ctrlTest-->
+	<div ng-include="'ctrlTest/test.html'"></div>
+
+	<!--srvTest-->
+	<div ng-include="'srvTest/srvTestView.html'"></div>
+
+
 
 	<script src="vendor/angular/angular.min.js"></script>
 	<script src="app.js"></script>
 	<script src="common/commonModule.js"></script>
 	<script src="common/filters/commonFiltersModule.js"></script>
 	<script src="ctrlTest/ctrlTestModule.js"></script>
+	<script src="srvTest/srvTestModule.js"></script>
+
+	<script src="srvTest/person.js"></script>
+	<script src="srvTest/srvTestCtrl.js"></script>//first
+	<script src="srvTest/services.js"></script>//second
 
 	<script src="ctrlTest/oneCtrl.js"></script>
 	<script src="ctrlTest/twoCtrl.js"></script>
@@ -41,5 +51,13 @@
 	<script src="feature/srvDays.js"></script>
 	<script src="common/services/valSrv.js"></script>
 
+	<script type="text/javascript">
+		//		update scope
+		//		находит скоуп, выполняет метод на скоупе
+		function clikBtn(){
+			//id - angularTwo в TwoCtrl
+			angular.element(angularTwo).scope().$apply('clickBtnTwoCtrl();');
+		}
+	</script>
 </body>
 </html>
