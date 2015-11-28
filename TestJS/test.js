@@ -53,12 +53,12 @@ console.log(fff.bb);
 /**************************************************************************************************/
 
 var a = 1;
-
+a = 3;
 function ff(){
 
-  //  var a = 2;
+    var a = 2;
 
-    console.log(this.aa);
+    console.log(this.a);
 };
 
 ff();
@@ -74,5 +74,33 @@ var r = obj2.hasOwnProperty.call(obj,'a'); //({}).hasOwnProperty.call(obj,'a');
 console.log(r);
 /**************************************************************************************************/
 
+var func = function() { console.log( 'First' ); return 'First';}();
+
+(function() { console.log( 'Second' ); }) ();
+
+console.log(func);
+
+/**************************************************************************************************/
+var a1, b1;
+
+function start(){
+    if(a1 && b1){
+        console.log('asdfasdf');
+    }
+}
+var f1 = function(){
+    a1 = true;
+    console.log('a1');
+    start();
+};
+var f2 = function(){
+    b1 = true;
+    console.log('b1');
+    start();
+};
+
+setTimeout(f1, 500);
+setTimeout(f2, 1500);
+/**************************************************************************************************/
 
 
