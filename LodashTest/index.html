@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<meta charset="UTF-8">-->
+    <meta charset="windows-1251">
+    <title>тест</title>
+
+</head>
+<body>
+
+    <script type="text/template" id="menu-template">
+        <div class="menu">
+            <span class="title"><%-title%></span>
+            <ul>
+                <% items.forEach(function(item) { %>
+                <li><%-item%></li>
+                <% }); %>
+            </ul>
+        </div>
+    </script>
+
+    <script type="text/template" id="users-template">
+        <table>
+            <tr>
+                <th>Name</th><th>Age</th>
+            </tr>
+            <tr>
+                <% users.forEach(function(user){ %>
+                <tr>
+                    <td> <%=user.name%></td>
+                    <td> <%=user.age%></td>
+                </tr>
+                <% }); %>
+            </tr>
+
+        </table>
+    </script>
+
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>

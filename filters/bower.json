@@ -1,0 +1,20 @@
+{
+  "name": "fff",
+  "version": "0.0.1",
+  "description": "fff",
+  "authors": ["YS"],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/js/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "bootstrap": "~3.3.5",
+    "angular-sanitize": "~1.4.3"
+  }
+}
