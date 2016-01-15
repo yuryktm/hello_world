@@ -6,6 +6,34 @@
 </head>
 <body>
 
+    <form id="button-example-form" name="button-example-form" method="post" action="#">
+
+        <fieldset id="menubuttons">
+            <legend>Menu Buttons</legend>
+
+            <fieldset id="menubuttonsfrommarkup">
+                <legend>From Markup</legend>
+
+                <input type="submit" id="menubutton1" name="menubutton1_button" value="Menu Button 1">
+                <select id="menubutton1select" name="menubutton1select">
+                    <option value="0">One</option>
+                    <option value="1">Two</option>
+                    <option value="2">Three</option>
+                </select>
+                <input type="button" id="menubutton3" name="menubutton3_button" value="Menu Button 3">
+                <div id="menubutton3menu" class="yui-overlay">
+                    <div class="bd">Menu Button 3 Menu</div>
+                </div>
+            </fieldset>
+
+            <fieldset id="menubuttonsfromjavascript">
+                <legend>From JavaScript</legend>
+            </fieldset>
+
+        </fieldset>
+
+    </form>
+    <script src="bower_components/dojo/dojo.js"></script>
     <script src="js/yui-common.js"></script>
     <script src="js/app.js"></script>
 </body>

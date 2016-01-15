@@ -1,3 +1,10 @@
-/**
- * Created by ysmirnov on 14.01.2016.
- */
+require([
+    'dojo/dom',
+    './js/m1.js'
+    ],function(dom, m1){
+        console.log(dom.byId('button-example-form'));
+        console.log(m1.test);
+});
+
+
+
