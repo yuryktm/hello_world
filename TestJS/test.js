@@ -228,46 +228,18 @@
 //};
 //arr.choto(function(x){return x*2;});
 //**************************************************************************************************/
-//(function(n){
-//    var print = function(str, l){
-//        for(var j=0;j<l;j++){
-//            console.log(str)
-//
-//        }
-//    };
-//
-//    for(var i=0;i<n;i++){
-//        //print('*', n-(i+1))
-//
-//       // console.log(n-(i+1));//bok
-//        //console.log((2*i+1));//zentr
-//    }
-//})(3);
-//**************************************************************************************************/
-//function Constants(){}
-//Constants.Const1 = "cccc1";
-//
-//console.log(Constants.Const1);
+(function(n){
+    var print = function(str, l){
+        for(var j=0;j<l;j++){
+            console.log(str)
 
-//var Constants = (function(c){
-//    var instance = c;
-//    return instance;
-//})(
-//    {
-//
-//        Const2 : "ccccccc2"
-//    });
-
-function Constants(){
-    this.Const1 = "cccc1";
-    var instance = this;
-
-    Constants = function(){
-        return instance;
+        }
     };
-}
 
-var c = Constants();
+    for(var i=0;i<n;i++){
+        //print('*', n-(i+1))
 
-console.log(c.Const1);
-
+       // console.log(n-(i+1));//bok
+        //console.log((2*i+1));//zentr
+    }
+})(3);
