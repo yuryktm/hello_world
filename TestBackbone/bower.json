@@ -1,0 +1,22 @@
+{
+  "name": "bb",
+  "version": "0.0.1",
+  "description": "bb",
+  "authors": [
+    "Yury"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/js/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery" : "*",
+    "underscore" : "*",
+    "backbone" : "*"
+  }
+}

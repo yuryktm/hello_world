@@ -1,3 +1,7 @@
 filters/app/vendor/jquery/dist/jquery.min.js
 filters/app/vendor/
 LodashTest/bower_components/
+YUITest/bower_components/
+TestBackbone/bower_components2/
+TestBackbone/bower_components/
+ContactManager/bower_components/

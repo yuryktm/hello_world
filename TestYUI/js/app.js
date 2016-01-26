@@ -1,3 +1,7 @@
-/**
- * Created by ysmirnov on 14.01.2016.
- */
+var oButton = new YAHOO.widget.Button({
+    id: "mybuttonid",
+    type: "button",
+    label: "My Button",
+    container: "someelement"
+});
+oButton.render();
