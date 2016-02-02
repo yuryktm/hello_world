@@ -9,7 +9,7 @@
 //var p = new Person({name:"ASDF"});
 //console.log(p.getName());
 /********************************************************************************************************************/
-var userModel  = Backbone.Model.extend({
+var userModel2  = Backbone.Model.extend({
     //данные по умолчанию
     defaults: {
         name: "Vasya",
@@ -33,19 +33,19 @@ var userModel  = Backbone.Model.extend({
     }
 });
 //
-var n = new userModel({name: 'Vas2'});
+var n = new userModel2({name: 'Vas2'});
 n.on("invalid", function(model, error) {
     alert(model.get("title") + " " + error);
 });
 
 
-console.log(n.get('name'));
-n.set('name', 'Vas3');
-n.set('name', '', {validate:true});
-n.set('age', 0, {validate:true});
-
-console.log(n.walk());
-console.log(n.toJSON());
+//console.log(n.get('name'));
+//n.set('name', 'Vas3');
+//n.set('name', '', {validate:true});
+//n.set('age', 0, {validate:true});
+//
+//console.log(n.walk());
+//console.log(n.toJSON());
 /*********************************************************************************************************************/
 //function BubbleSort(arr)
 //{
