@@ -49,9 +49,32 @@ var userCollection = Backbone.Collection.extend({
     model: userModel
 });
 
-var users = [];
+var users = [{name:"sdfgdf", age: 34},{name:"jjjjj", age: 11}];
 
-var collection = new userCollection(users);
+//вид списка юзеров
+var usersView = Backbone.View.extend({
+    tagName:'ul',
 
+    initialize: function(){
+        console.log(this.collection);
+    },
+
+    render: function(){
+        _.each(this.collection.models, function(user){
+            var uv = new usersView({model: user});
+            this.$el.append(uv.render().el);
+            //console.log(this);
+        }, this);
+
+        return this;
+    }
+
+
+});
+var col = new userCollection(users);
+
+var uv_obj = new usersView({collection: col});
+uv_obj.render();
+$('body').append(uv_obj.el);
 
 $('body').append(view.el);
