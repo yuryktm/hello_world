@@ -46,6 +46,8 @@
 
         initialize: function () {
             this.collection = new App.Collections.Directory(contacts);
+            ///
+            this.collection.on('add', this.renderContact, this);
             this.render();
         },
 
@@ -62,9 +64,17 @@
             });
             this.$el.append(contactView.render().el);
         }
+
     });
 
     var directory = new App.Views.DirectoryView();
+    //directory.addContact();
+
+    var def = { name: "Contact 00000000", address: "1, a street, a town, a city, AB12 3CD", tel: "0123456789", email: "anemail@me.com", type: "friend" }
+    var newModel = new App.Models.Contact(def);
+    directory.collection.add(newModel);
+
+
 
 } (jQuery));
 

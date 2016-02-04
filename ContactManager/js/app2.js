@@ -60,11 +60,11 @@ var usersView = Backbone.View.extend({
     },
 
     render: function(){
-        _.each(this.collection.models, function(user){
-            var uv = new usersView({model: user});
-            this.$el.append(uv.render().el);
-            //console.log(this);
-        }, this);
+        //_.each(this.collection.models, function(user){
+        //    var uv = new usersView({model: user});
+        //    this.$el.append(uv.render().el);
+        //    //console.log(this);
+        //}, this);
 
         return this;
     }
