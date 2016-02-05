@@ -48,6 +48,8 @@
             this.collection = new App.Collections.Directory(contacts);
             ///
             this.collection.on('add', this.renderContact, this);
+            this.collection.on('remove',this.removeItem, this);
+
             this.render();
         },
 
@@ -63,6 +65,10 @@
                 model: item
             });
             this.$el.append(contactView.render().el);
+        },
+
+        removeItem: function(item){
+
         }
 
     });
