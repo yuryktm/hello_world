@@ -78,3 +78,33 @@ uv_obj.render();
 $('body').append(uv_obj.el);
 
 $('body').append(view.el);
+
+///////////////////////Router///////////////////////////////////
+
+var router = Backbone.Router.extend({
+    routes: {
+        '' :                    'index',
+        'page/hard123' :        'page',
+        'search/:query' :              'search',
+        '*other':                     'default',
+    },
+
+    index: function(){
+        console.log('index');
+    },
+    page: function(q){
+        console.log('page/hard123 ' + q);
+    },
+    search: function(query){
+        console.log('search ' + query);
+    },
+    //проверка - ../index.html#12354123412
+    //index.html + # + 12354123412
+    default: function(q){
+        console.log('default' + q);
+    }
+});
+
+new router();
+Backbone.history.start();
+////////////////////////////////////////////////////////////////////////////////
