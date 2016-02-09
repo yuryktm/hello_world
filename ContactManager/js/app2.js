@@ -81,12 +81,21 @@ $('body').append(view.el);
 
 ///////////////////////Router///////////////////////////////////
 
+//global custom object events
+var vent = _.extend({}, Backbone.Events);
+
 var router = Backbone.Router.extend({
     routes: {
         '' :                    'index',
         'page/hard123' :        'page',
         'search/:query' :              'search',
-        '*other':                     'default',
+        'tasks/:id'  :       'showTasks',
+
+        '*other':                     'default'//писать в конце
+    },
+
+    showTasks: function(id){
+        vent.trigger('tasks:show', id);
     },
 
     index: function(){
@@ -107,4 +116,16 @@ var router = Backbone.Router.extend({
 
 new router();
 Backbone.history.start();
+
+var taskView  =  Backbone.View.extend({
+    initialize: function(){
+        vent.on('tasks:show', this.show, this);
+    },
+
+    show: function(id){
+        console.log('show view ' + id);
+    }
+});
+
+new taskView;
 ////////////////////////////////////////////////////////////////////////////////
