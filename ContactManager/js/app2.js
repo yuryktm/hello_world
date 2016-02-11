@@ -129,3 +129,16 @@ var taskView  =  Backbone.View.extend({
 
 new taskView;
 ////////////////////////////////////////////////////////////////////////////////
+//работа с сервером
+var uModel = Backbone.Model.extend({
+    defaults : {
+        name:'',
+        id : ''
+    },
+
+    urlRoot: 'user' //url запроса
+});
+
+
+var u = new uModel({id:1});
+u.fetch(); //запросит с сервера юзера с id-1 и положит в модель, запрос будет такой - ../user/1

@@ -24,7 +24,8 @@ requirejs.config({
 });
 
 require(
-    ["./js/app.js"],
+    //["./js/app.js"],
+    ["./js/list-group.js"],
     function(App){
 
         //$(document).ready(function() {
