@@ -24,14 +24,14 @@ requirejs.config({
 });
 
 require(
-    //["./js/app.js"],
-    ["./js/list-group.js"],
+    ["./js/app.js"],
+    //["./js/list-group.js"],
     function(App){
 
-        //$(document).ready(function() {
-        //    var myApp = new App();
-        //    myApp.init();
-        //});
+        $(document).ready(function() {
+            var myApp = new App();
+            myApp.init();
+        });
 
         console.log('app loaded ...');
     });
