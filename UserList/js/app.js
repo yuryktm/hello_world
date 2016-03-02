@@ -69,22 +69,19 @@ define(['jquery',
             initialize: function (model) {
 
                 this.collection = new UserCollection(model);
-                ///
                 //this.collection.on('add', this.renderContact, this);
                 //this.collection.on('remove',this.removeItem, this);
-
-
             },
 
             render: function () {
 
-                //tplUserList
-                this.$el.append(this.template);
+                //this.$el.append(tplUserList);
+                this.$el.append(this.template());
 
-                //var that = this;
-                //_.each(this.collection.models, function (item) {
-                //    that.renderUser(item);
-                //}, this);
+                var that = this;
+                _.each(this.collection.models, function (item) {
+                    that.renderUser(item);
+                }, this);
 
                 return this;
             },
@@ -93,6 +90,7 @@ define(['jquery',
                 var userView = new UserView({
                     model: item
                 });
+
                 this.$el.find('tbody').append(userView.render().el);
             }
 
