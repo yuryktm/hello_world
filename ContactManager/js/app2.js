@@ -1,3 +1,4 @@
+//Backbone уроки
 var userModel  = Backbone.Model.extend({
     //данные по умолчанию
     defaults: {
@@ -143,6 +144,7 @@ var uModel = Backbone.Model.extend({
 var u = new uModel({id:1});
 u.fetch(); //запросит с сервера юзера с id-1 и положит в модель, запрос будет такой - ../user/1
 ////////////////////////
+//change data
 var m = new App.Models.Task({id : 1});
 m.fetch({
         success : function(){
@@ -150,3 +152,6 @@ m.fetch({
             m.save();
         }
         });
+
+//delete data
+m.destroy();
