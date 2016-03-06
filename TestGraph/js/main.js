@@ -10,7 +10,7 @@
                 //начальная инициализация
                 particleSystem = system;
                 particleSystem.screenSize(canvas.width, canvas.height);
-                particleSystem.screenPadding(80);
+                particleSystem.screenPadding(60);
                 that.initMouseHandling();
             },
 
@@ -31,9 +31,12 @@
 
                 particleSystem.eachNode( //теперь каждую вершину
                     function(node, pt){  //получаем вершину и точку где она
-                        var w = 10;   //ширина квадрата
-                        ctx.fillStyle = "orange"; //с его цветом понятно
-                        ctx.fillRect(pt.x-w/2, pt.y-w/2, w,w); //рисуем
+                        var w = 100;   //ширина квадрата
+                        ctx.fillStyle = "black"; //с его цветом понятно
+                        //ctx.fillRect(pt.x-w/2, pt.y-w/2, w,w); //рисуем
+                        ctx.rect(pt.x-w/2, pt.y-w/2, w,w); //рисуем
+
+                        ctx.stroke();
                         ctx.fillStyle = "black"; //цвет для шрифта
                         ctx.font = 'italic 13px sans-serif'; //шрифт
                         ctx.fillText (node.name, pt.x+8, pt.y+8); //пишем имя у каждой точки
