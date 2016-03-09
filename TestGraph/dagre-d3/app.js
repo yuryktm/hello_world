@@ -1,8 +1,53 @@
-
 // Create a new directed graph
 var g = new dagreD3.graphlib.Graph().setGraph({});
 
+//1. тип ДБП;
+//2. статус;
+//3. текущий уровень согласования;
+//current level coordination
+//4. исполнителей текущего уровня согласования.
+//executor
+var d = {
+    DPBType : "Перевод №1234",
+    status : "В процессе",
+    currentLevelCoordination : "Согласование",
+    executorCurrentLevelCoordination : "Иванов И.И."
+}
+
 var data = {
+    nodes: [
+        {
+            id: "1",
+            DPBType : "Перевод №111",
+            status : "В процессе",
+            currentLevelCoordination : "Согласование",
+            executorCurrentLevelCoordination : "Иванов И.И.",
+            root: true
+        },
+        {
+            id: "2",
+            DPBType : "Перевод №222",
+            status : "В процессе",
+            currentLevelCoordination : "Согласование",
+            executorCurrentLevelCoordination : "Иванов И.И."
+        },
+        {
+            id: "3",
+            DPBType : "Перевод №333",
+            status : "В процессе",
+            currentLevelCoordination : "Согласование",
+            executorCurrentLevelCoordination : "Иванов И.И."
+        }
+    ],
+    edges:[
+        { id: "1", link: "2"},
+        { id: "1", link: "3"}
+    ]
+};
+
+
+
+var data2 = {
     states: [
         {id: "1", label: "Состояние 1"},
         {id: "2", label: "leb 2"},
@@ -35,22 +80,32 @@ var data = {
 };
 
 // Automatically label each of the nodes
-data.states.forEach(function(state) {
+data.nodes.forEach(function(node) {
     //g.setNode(state.id, { label: state.label, href: "http://www.google.ru/" });
    //////////
 
-    g.setNode(state.id, {
-        labelType: "html",
-        label: "<b>"+state.label+"</b><br>Version: " + state.label + "<br><b>"+state.label+"</b><br>Version: " + state.label
-       // class: "comp",
-       // rx: 5,
-       // ry: 5
-        //width: 150
-    });
+    //g.setNode(state.id, {
+    //    labelType: "html",
+    //    label: "<b>"+state.label+"</b><br>Version: " + state.label + "<br><b>"+state.label+"</b><br>Version: " + state.label
+    //   // class: "comp",
+    //   // rx: 5,
+    //   // ry: 5
+    //    //width: 150
+    //});
+
+    var label = "<b>Тип: </b> " + node.DPBType + "<br>" +
+                "<b>Статус: </b> " + node.status + "<br>" +
+                "<b>Уровень: </b> " + node.currentLevelCoordination + "<br>" +
+                "<b>Исполнитель: </b> " + node.executorCurrentLevelCoordination;
+
+    g.setNode(node.id, {
+            labelType: "html",
+            label: label
+        });
 });
 
 data.edges.forEach(function(edge) {
-    g.setEdge(edge.n, edge.l, { label: "", arrowheadClass: "arrowhead" });
+    g.setEdge(edge.id, edge.link, { label: "", arrowheadClass: "arrowhead" });
 });
 
 // Set some general styles
