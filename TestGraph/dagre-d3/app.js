@@ -13,42 +13,42 @@ var d = {
     currentLevelCoordination : "Согласование",
     executorCurrentLevelCoordination : "Иванов И.И."
 }
+//
+//var data = {
+//    nodes: [
+//        {
+//            id: "1",
+//            DPBType : "Перевод №111",
+//            status : "В процессе",
+//            currentLevelCoordination : "Согласование",
+//            executorCurrentLevelCoordination : "Иванов И.И.",
+//            root: true
+//        },
+//        {
+//            id: "2",
+//            DPBType : "Перевод №222",
+//            status : "В процессе",
+//            currentLevelCoordination : "Согласование",
+//            executorCurrentLevelCoordination : "Иванов И.И."
+//        },
+//        {
+//            id: "3",
+//            DPBType : "Перевод №333",
+//            status : "В процессе",
+//            currentLevelCoordination : "Согласование",
+//            executorCurrentLevelCoordination : "Иванов И.И."
+//        }
+//    ],
+//    edges:[
+//        { id: "1", link: "2"},
+//        { id: "1", link: "3"}
+//    ]
+//};
+
+
 
 var data = {
     nodes: [
-        {
-            id: "1",
-            DPBType : "Перевод №111",
-            status : "В процессе",
-            currentLevelCoordination : "Согласование",
-            executorCurrentLevelCoordination : "Иванов И.И.",
-            root: true
-        },
-        {
-            id: "2",
-            DPBType : "Перевод №222",
-            status : "В процессе",
-            currentLevelCoordination : "Согласование",
-            executorCurrentLevelCoordination : "Иванов И.И."
-        },
-        {
-            id: "3",
-            DPBType : "Перевод №333",
-            status : "В процессе",
-            currentLevelCoordination : "Согласование",
-            executorCurrentLevelCoordination : "Иванов И.И."
-        }
-    ],
-    edges:[
-        { id: "1", link: "2"},
-        { id: "1", link: "3"}
-    ]
-};
-
-
-
-var data2 = {
-    states: [
         {id: "1", label: "Состояние 1"},
         {id: "2", label: "leb 2"},
         {id: "3", label: "leb 3"},
@@ -61,21 +61,89 @@ var data2 = {
         {id: "10", label: "leb 10"}],
     edges:[
         //{ node: "1", link: "2"}
-        { n: "1", l: "2"},
-        { n: "1", l: "3"},
-        { n: "1", l: "4"},
-        { n: "1", l: "5"},
-        { n: "1", l: "6"},
+        //{ id: "1", link: "2"},
+        //{ id: "1", link: "3"},
+        //{ id: "1", link: "4"},
+        //{ id: "1", link: "5"},
+        //{ id: "1", link: "6"},
+        //
+        //{ id: "2", link: "7"},
+        //{ id: "3", link: "7"},
+        //{ id: "4", link: "7"},
+        //{ id: "5", link: "7"},
+        //{ id: "6", link: "7"},
+        //
+        //{ id: "8", link: "2"},
+        //{ id: "6", link: "9"},
+        //{ id: "7", link: "10"}
 
-        { n: "2", l: "7"},
-        { n: "3", l: "7"},
-        { n: "4", l: "7"},
-        { n: "5", l: "7"},
-        { n: "6", l: "7"},
 
-        { n: "8", l: "2"},
-        { n: "6", l: "9"},
-        { n: "7", l: "10"}
+        //////////////////////////////////////////////////////
+        //{id: "1", link: "2"},
+        //{id: "1", link: "6"},
+        //{id: "1", link: "9"},
+        //
+        //{id: "2", link: "5"},
+        //{id: "2", link: "3"},
+        //
+        //{id: "3", link: "5"},
+        //{id: "3", link: "7"},
+        //
+        //{id: "4", link: "10"},
+        //{id: "4", link: "8"},
+        //{id: "4", link: "5"},
+        //{id: "4", link: "9"},
+        //
+        //{id: "5", link: "9"},
+        //{id: "5", link: "7"},
+        //
+        //{id: "6", link: "9"},
+        //{id: "6", link: "8"},
+        //{id: "6", link: "7"},
+
+/////////////////////////////////////////
+        //{id: "5", link: "1"},
+        //{id: "5", link: "2"},
+        //{id: "5", link: "3"},
+        //{id: "5", link: "7"},
+        //{id: "5", link: "4"},
+        //{id: "5", link: "9"},
+        //
+        //{id: "1", link: "9"},
+        //{id: "1", link: "6"},
+        //
+        //{id: "4", link: "10"},
+        //{id: "4", link: "8"},
+        //{id: "4", link: "9"},
+        //
+        //{id: "6", link: "9"},
+        //{id: "6", link: "8"},
+        //{id: "6", link: "7"},
+
+
+
+        {id: "5", link: "1"},
+        {id: "5", link: "2"},
+        {id: "5", link: "3"},
+        {id: "5", link: "7"},
+        {id: "5", link: "4"},
+        {id: "5", link: "9"},
+
+        {id: "1", link: "6"},
+
+        {id: "4", link: "10"},
+        {id: "4", link: "8"},
+
+
+        {id: "6", link: "8"},
+        {id: "6", link: "7"},
+
+        {id: "9", link: "1"},
+        {id: "9", link: "4"},
+        {id: "9", link: "6"},
+
+
+
     ]
 };
 
@@ -93,10 +161,12 @@ data.nodes.forEach(function(node) {
     //    //width: 150
     //});
 
-    var label = "<b>Тип: </b> " + node.DPBType + "<br>" +
+    var label = "<b>" + node.id + "</b><br>" +
                 "<b>Статус: </b> " + node.status + "<br>" +
                 "<b>Уровень: </b> " + node.currentLevelCoordination + "<br>" +
                 "<b>Исполнитель: </b> " + node.executorCurrentLevelCoordination;
+
+  //  var label = "dsfgsd";
 
     g.setNode(node.id, {
             labelType: "html",
@@ -115,7 +185,7 @@ g.nodes().forEach(function(v) {
 });
 
 // Add some custom colors based on state
-g.node('1').style = "fill: #BEF574";
+g.node('5').style = "fill: #BEF574";
 //g.node('CLOSED').style = "fill: #f77";
 //g.node('ESTAB').style = "fill: #7f7";
 
@@ -148,12 +218,12 @@ zoom
 svg.attr('height', g.graph().height * initialScale + 40);
 
 
-svg.selectAll("g.node").on("click", function(id) {
-   // var _node = g.node(id);
-    console.log("Clicked " + id);
-
-    var a = document.createElement("a");
-    a.target = "_blank";
-    a.href = "http://google.com";
-    a.click();
-});
+//svg.selectAll("g.node").on("click", function(id) {
+//   // var _node = g.node(id);
+//    console.log("Clicked " + id);
+//
+//    var a = document.createElement("a");
+//    a.target = "_blank";
+//    a.href = "http://google.com";
+//    a.click();
+//});
