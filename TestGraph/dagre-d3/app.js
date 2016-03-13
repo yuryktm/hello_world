@@ -140,10 +140,7 @@ var data = {
 
         {id: "9", link: "1"},
         {id: "9", link: "4"},
-        {id: "9", link: "6"},
-
-
-
+        {id: "9", link: "6"}
     ]
 };
 
@@ -170,7 +167,8 @@ data.nodes.forEach(function(node) {
 
     g.setNode(node.id, {
             labelType: "html",
-            label: label
+            label: label,
+            style: node.root ? "fill: #BEF574" : "fill: #FFF"
         });
 });
 
@@ -185,7 +183,7 @@ g.nodes().forEach(function(v) {
 });
 
 // Add some custom colors based on state
-g.node('5').style = "fill: #BEF574";
+//g.node('5').style = "fill: #BEF574";
 //g.node('CLOSED').style = "fill: #f77";
 //g.node('ESTAB').style = "fill: #7f7";
 

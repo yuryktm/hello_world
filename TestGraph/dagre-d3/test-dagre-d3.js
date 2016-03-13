@@ -1,10 +1,7 @@
 (function(){
     document.addEventListener("DOMContentLoaded", function(){
-        alert("sdfsdfs");
-
 
         $('#diagram').html('<svg width="1000" height="500"><g/></svg>');
-
 
         // Create a new directed graph
         var g = new dagreD3.graphlib.Graph().setGraph({});
@@ -36,8 +33,7 @@
             ],
             edges:[
                 { id: "1", link: "2"},
-                { id: "1", link: "3"},
-                { id: "2", link: "1"}
+                { id: "1", link: "3"}
             ]
         };
 
@@ -50,7 +46,8 @@
 
             g.setNode(node.id, {
                 labelType: "html",
-                label: label
+                label: label,
+                style: node.root ? "fill: #BEF574" : "fill: #FFF"
             });
         });
 
@@ -63,8 +60,6 @@
             var node = g.node(v);
             node.rx = node.ry = 5;
         });
-
-        g.node('1').style = "fill: #BEF574";
 
         var svg = d3.select("svg"), inner = svg.select("g");
 
@@ -82,9 +77,7 @@
         render(inner, g);
 
         // Center the graph
-        var initialScale = 3;//0.75;
-
-
+        var initialScale = 1;//0.75;
 
         zoom
             .translate([(svg.attr("width") - g.graph().width * initialScale) / 2, 20])
