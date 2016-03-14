@@ -17,4 +17,29 @@
         </td>
         <td><textarea rows="3" cols="50" style="resize: none;  border: 0 none #FFF; overflow: hidden; padding-left: 15px;" ><%= contactDetails %>
     </textarea></td>
+    </tr>
+    <tr>
+        <td style="float: right">
+            <label>Статус: </label>
+        </td>
+        <td><b style="padding-left: 15px;"><%= status %></b></td>
+    </tr>
+    <tr>
+        <td style="float: right">
+            <label>Соглашение о качестве:</label>
+        </td>
+        <td><a style="padding-left: 15px;" href=""><%= agreementQuality %></a></td>
+    </tr>
+    <tr>
+        <td style="float: right">
+            <label>Тип поставщика:</label>
+        </td>
+        <td><%= vendorType%></td>
+    </tr>
+    <tr>
+        <td style="float: right">
+            <label>Необходимость выездного аудита:</label>
+        </td>
+        <td><%= needForAudit %></td>
+    </tr>
 </table>
