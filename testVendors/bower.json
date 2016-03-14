@@ -1,0 +1,21 @@
+{
+  "name": "user list",
+  "version": "0.0.1",
+  "description": "user list",
+  "authors": ["YS"],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/js/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "*",
+    "bootstrap": "*",
+    "requirejs": "*",
+    "requirejs-text":"~2.0.10"
+  }
+}

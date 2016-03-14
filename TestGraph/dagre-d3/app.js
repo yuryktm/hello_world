@@ -53,30 +53,41 @@ var data = {
         {id: "2", label: "leb 2"},
         {id: "3", label: "leb 3"},
         {id: "4", label: "leb 4 Ссотояние состояние Ссотояние состояние"},
-        {id: "5", label: "leb 5"},
+        {id: "5", label: "leb 5", root: true},
         {id: "6", label: "leb 6"},
         {id: "7", label: "leb 7 Ссотояние состояние"},
         {id: "8", label: "leb 8"},
         {id: "9", label: "leb 9"},
         {id: "10", label: "leb 10"}],
     edges:[
-        //{ node: "1", link: "2"}
-        //{ id: "1", link: "2"},
-        //{ id: "1", link: "3"},
-        //{ id: "1", link: "4"},
-        //{ id: "1", link: "5"},
-        //{ id: "1", link: "6"},
-        //
+       // { node: "1", link: "2"},
+        { id: "1", link: "2"},
+        { id: "1", link: "3"},
+        { id: "1", link: "4"},
+        { id: "1", link: "5"},
+        { id: "1", link: "6"},
+
         //{ id: "2", link: "7"},
         //{ id: "3", link: "7"},
         //{ id: "4", link: "7"},
         //{ id: "5", link: "7"},
         //{ id: "6", link: "7"},
-        //
-        //{ id: "8", link: "2"},
-        //{ id: "6", link: "9"},
-        //{ id: "7", link: "10"}
 
+        { id: "8", link: "2"},
+        { id: "6", link: "9"},
+        { id: "7", link: "10"},
+
+        { id: "7", link: "2"},
+        { id: "7", link: "3"},
+        { id: "7", link: "4"},
+        { id: "7", link: "5"},
+        { id: "7", link: "6"},
+
+        { id: "7", link: "2"},
+        { id: "7", link: "3"},
+        { id: "7", link: "4"},
+        { id: "7", link: "5"},
+        { id: "7", link: "6"}
 
         //////////////////////////////////////////////////////
         //{id: "1", link: "2"},
@@ -121,26 +132,49 @@ var data = {
         //{id: "6", link: "7"},
 
 
+///////////////////////////////////////////////////////////
+//        {id: "5", link: "1"},
+//        {id: "5", link: "2"},
+//        {id: "5", link: "3"},
+//        {id: "5", link: "7"},
+//        {id: "5", link: "4"},
+//        {id: "5", link: "9"},
+//
+//        {id: "1", link: "6"},
+//
+//        {id: "4", link: "10"},
+//        {id: "4", link: "8"},
+//
+//
+//        {id: "6", link: "8"},
+//        {id: "6", link: "7"},
+//
+//        {id: "9", link: "1"},
+//        {id: "9", link: "4"},
+//        {id: "9", link: "6"}
 
-        {id: "5", link: "1"},
-        {id: "5", link: "2"},
-        {id: "5", link: "3"},
-        {id: "5", link: "7"},
-        {id: "5", link: "4"},
-        {id: "5", link: "9"},
+//////////////////////////////////////////////////////////////////
+//        {id: "5", link: "1"},
+//        {id: "5", link: "2"},
+//        {id: "5", link: "3"},
+//        {id: "5", link: "7"},
+//        {id: "5", link: "4"},
+//        {id: "5", link: "9"},
+//
+//        {id: "9", link: "1"},
+//        {id: "9", link: "4"},
+//        {id: "9", link: "6"},
+//
+//        {id: "4", link: "10"},
+//        {id: "4", link: "8"},
+//
+//        {id: "6", link: "8"},
+//        {id: "6", link: "7"},
+//
+//        {id: "1", link: "6"},
 
-        {id: "1", link: "6"},
-
-        {id: "4", link: "10"},
-        {id: "4", link: "8"},
 
 
-        {id: "6", link: "8"},
-        {id: "6", link: "7"},
-
-        {id: "9", link: "1"},
-        {id: "9", link: "4"},
-        {id: "9", link: "6"}
     ]
 };
 
@@ -173,7 +207,8 @@ data.nodes.forEach(function(node) {
 });
 
 data.edges.forEach(function(edge) {
-    g.setEdge(edge.id, edge.link, { label: "", arrowheadClass: "arrowhead" });
+    //g.setEdge(edge.id, edge.link, { label: "", arrowheadClass: "arrowhead" });
+    g.setEdge(edge.id, edge.link, { label: "" });
 });
 
 // Set some general styles
@@ -213,7 +248,7 @@ zoom
     .translate([(svg.attr("width") - g.graph().width * initialScale) / 2, 20])
     .scale(initialScale)
     .event(svg);
-svg.attr('height', g.graph().height * initialScale + 40);
+//svg.attr('height', g.graph().height * initialScale + 40);
 
 
 //svg.selectAll("g.node").on("click", function(id) {
