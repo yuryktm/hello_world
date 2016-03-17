@@ -1,0 +1,13 @@
+table.auditFiles,
+table.vendorWorksheets
+{
+     border: 1px solid black; /* Рамка вокруг таблицы */
+     border-collapse: collapse; /* Отображать только одинарные линии */
+ }
+table.auditFiles td,
+table.auditFiles th,
+table.vendorWorksheets td,
+table.vendorWorksheets th {
+    border: 1px solid black; /* Граница вокруг ячеек */
+    text-align: center;
+}

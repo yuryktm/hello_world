@@ -1,0 +1,134 @@
+<table style="width:100%">
+    <tr>
+        <td style="float: right">
+            <label>Наименование:</label>
+        </td>
+        <td style="padding-left: 15px;">
+            <input width="400px" type="text" value="<%= name %>"/>
+            <input type="text" value="<%= name %>"/>
+        </td>
+    </tr>
+    <tr>
+        <td style="float: right">
+            <label>Контактные данные:</label>
+        </td>
+        <td style="padding-left: 15px;">
+            <textarea rows="3" cols="50" style="resize: none;"><%= contactDetails %>
+            </textarea>
+        </td>
+    </tr>
+    <tr style="color: gray">
+        <td style="float: right">
+            <label>Статус: </label>
+        </td>
+        <td style="padding-left: 15px;"><b ><%= status %></b></td>
+    </tr>
+    <tr>
+        <td style="float: right">
+            <label>Соглашение о качестве:</label>
+        </td>
+        <td style="padding-left: 15px;">
+            <div class="input-group input-group-sm">
+                <input class="agreement-quality-file form-control input-sm" type="text" value="<%= agreementQualityFile %>" title="<%= agreementQualityFile %>" readonly="readonly"/>
+                <div class="input-group-btn">
+                    <button class="set-agreement-quality-file btn btn-sm btn-default" title="Выбрать файл">
+                        <span class="glyphicon glyphicon-option-horizontal"></span>
+                    </button>
+                    <button class="remove-agreement-quality-file btn btn-sm btn-default" title="Удалить файл">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="float: right">
+            <label>Тип поставщика:</label>
+        </td>
+        <td style="padding-left: 15px;"><span ><%= vendorType%></span></td>
+    </tr>
+    <td style="float: right">
+        <label>Необходимость выездного аудита:</label>
+    </td>
+    <td style="padding-left: 15px;">
+        <input type="checkbox" <%= needForAudit ? "checked='checked'" : "" %> />
+    </td>
+    </tr>
+</table>
+<hr/>
+
+<label>Файлы вложения аудита:</label>
+<table class="auditFiles">
+    <thead>
+    <tr>
+        <th style="width: 400px">Файл</th>
+        <th style="width: 150px">Дата проведения аудита</th>
+        <th style="width: 150px">Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(auditFiles, function(auditFile){ %>
+    <tr>
+        <td>
+            <% _.each(auditFile.files, function(file){ %>
+            <a href=""><%= file.fileName %></a><br />
+            <% });%>
+        </td>
+        <td>
+            <div class="input-group input-group-sm">
+                <input class="input-sm value" type="text" value="<%= auditFile.auditDate %>" title="<%= auditFile.auditDate %>"/>
+                <div class="input-group-btn">
+                    <button class="showPicker btn btn-sm btn-default" title="Редактировать">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </button>
+                </div>
+            </div>
+        </td>
+        <td>
+            <button class="add-vendorWorksheet-btn">Add</button>
+            <button class="del-vendorWorksheet-btn">Del</button>
+        </td>
+    </tr>
+    <% });%>
+    </tbody>
+</table>
+
+<br/>
+
+<table class="vendorWorksheets">
+    <thead>
+    <tr>
+        <th style="width: 400px">Анкета поставщика</th>
+        <th style="width: 150px">Дата отправки</th>
+        <th style="width: 150px">Дата получения</th>
+        <th style="width: 150px">Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(vendorWorksheets, function(vendorWorksheet){ %>
+    <tr>
+        <td>
+            <% _.each(vendorWorksheet.worksheets, function(worksheet){ %>
+            <a href=""><%= worksheet.fileName %></a><br />
+            <% });%>
+        </td>
+        <td>
+            <%= vendorWorksheet.sentDate %>
+        </td>
+        <td>
+            <%= vendorWorksheet.receivedDate %>
+        </td>
+        <td>
+            <button class="add-vendorWorksheet-btn">Add</button>
+            <button class="del-vendorWorksheet-btn">Del</button>
+        </td>
+    </tr>
+    <% });%>
+    </tbody>
+</table>
+
+<br/>
+<button class="save-btn" title="Сохранить">Сохранить
+</button>
+<button class="cancel-btn" title="Отмена">Отмена
+</button>

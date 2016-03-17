@@ -3,43 +3,107 @@
         <td style="float: right">
             <label>Системный номер: </label>
         </td>
-        <td><span style="padding-left: 15px;"><%= systemNumber %></span></td>
+        <td style="padding-left: 15px;">
+            <%= systemNumber %></td>
     </tr>
     <tr>
         <td style="float: right">
             <label>Наименование<span style="color: red">*</span>:</label>
         </td>
-        <td><span style="padding-left: 15px;"><%= name %></span></td>
+        <td style="padding-left: 15px;"><%= name %></td>
     </tr>
     <tr>
         <td style="float: right">
             <label>Контактные данные<span style="color: red">*</span>:</label>
         </td>
-        <td><textarea rows="3" cols="50" style="resize: none;  border: 0 none #FFF; overflow: hidden; padding-left: 15px;" ><%= contactDetails %>
+        <td style="padding-left: 15px;"><textarea rows="3" cols="50" style="resize: none;  border: 0 none #FFF; overflow: hidden;" ><%= contactDetails %>
     </textarea></td>
     </tr>
-    <tr>
+    <tr style="color: gray">
         <td style="float: right">
             <label>Статус: </label>
         </td>
-        <td><b style="padding-left: 15px;"><%= status %></b></td>
+        <td style="padding-left: 15px;"><b ><%= status %></b></td>
     </tr>
     <tr>
         <td style="float: right">
             <label>Соглашение о качестве:</label>
         </td>
-        <td><a style="padding-left: 15px;" href=""><%= agreementQuality %></a></td>
+        <td style="padding-left: 15px;"><a href=""><%= agreementQualityFile %></a></td>
     </tr>
     <tr>
         <td style="float: right">
             <label>Тип поставщика:</label>
         </td>
-        <td><%= vendorType%></td>
+        <td style="padding-left: 15px;"><span ><%= vendorType%></span></td>
     </tr>
-    <tr>
         <td style="float: right">
             <label>Необходимость выездного аудита:</label>
         </td>
-        <td><%= needForAudit %></td>
+        <td style="padding-left: 15px;">
+            <input type="checkbox" <%= needForAudit ? "checked='checked'" : "" %> disabled="disabled"/>
+        </td>
     </tr>
 </table>
+<hr/>
+
+<label>Файлы вложения аудита:</label>
+<table class="auditFiles">
+    <thead>
+        <tr>
+            <th style="width: 400px">Файл</th>
+            <th style="width: 150px">Дата проведения аудита</th>
+            <th style="width: 150px">Результаты аудита подтверждены</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% _.each(auditFiles, function(auditFile){ %>
+        <tr>
+            <td>
+                <% _.each(auditFile.files, function(file){ %>
+                    <a href=""><%= file.fileName %></a><br />
+                <% });%>
+            </td>
+            <td>
+                <%= auditFile.auditDate %>
+            </td>
+            <td>
+                <%= auditFile.resultsConfirmAuditDate %>
+            </td>
+        </tr>
+        <% });%>
+    </tbody>
+</table>
+
+<br/>
+
+<table class="vendorWorksheets">
+    <thead>
+    <tr>
+        <th style="width: 400px">Анкета поставщика</th>
+        <th style="width: 150px">Дата отправки</th>
+        <th style="width: 150px">Дата получения</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(vendorWorksheets, function(vendorWorksheet){ %>
+    <tr>
+        <td>
+            <% _.each(vendorWorksheet.worksheets, function(worksheet){ %>
+            <a href=""><%= worksheet.fileName %></a><br />
+            <% });%>
+        </td>
+        <td>
+            <%= vendorWorksheet.sentDate %>
+        </td>
+        <td>
+            <%= vendorWorksheet.receivedDate %>
+        </td>
+    </tr>
+    <% });%>
+    </tbody>
+</table>
+
+<br/>
+<button class="edit-btn" title="Отредактировать">Отредактировать
+</button>
