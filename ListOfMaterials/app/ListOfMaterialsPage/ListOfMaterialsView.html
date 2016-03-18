@@ -1,0 +1,69 @@
+<div class="list-group" ng-controller="listOfMaterialsCtrl">
+    <a href="#" class="list-group-item" ng-repeat="item in model.letters" ng-class="{'active': item.selected}" ng-click="select(item.id);">
+        <h4 class="list-group-item-heading" ng-class="{'not-read-letter': !item.readed}">
+            {{item.subject}}
+        </h4>
+        <input class="letter-check-box list-group-item-heading " ng-model="item.checked" type="checkbox">
+        <p class="list-group-item-text" ng-class="{'not-read-letter': !item.readed}">
+            {{item.who}}
+        </p>
+    </a>
+</div>
+
+<div ng-controller="listOfMaterialsCtrl">
+    <table class="table table-bordered" style=";margin: 10px;">
+        <caption>Перечень материалов</caption>
+        <thead>
+        <tr>
+            <th>Наименование материала/услуги</th>
+            <th>Контакт с продуктом А</th>
+            <th>Стадия процесса B</th>
+            <th>Критичность  С</th>
+            <th>Число риска по материалу</th>
+            <th>Уровень риска</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in model.materials track by $index">
+                <td>
+                    <input type="text" ng-model="item.materialName" />
+                </td>
+                <td>
+                    <select class="form-control"
+                            ng-options="item.id as item.label for item in model.verificationRestrictionsDictionary"
+                            ng-model="item.contactProductA">
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control"
+                            ng-options="item.id as item.label for item in model.verificationRestrictionsDictionary"
+                            ng-model="item.stagesProcessesB">
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control"
+                            ng-options="item.id as item.label for item in model.verificationRestrictionsDictionary"
+                            ng-model="item.criticalityC">
+                    </select>
+                </td>
+                <td>{{item.numberOfRiskForMaterial}}</td>
+                <td>{{item.levelOfRisk}}</td>
+                <td>
+                    <button class="set-value btn btn-sm btn-default" title="Добавить"
+                            ng-click="addMaterial()">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                    <button class="remove-value btn btn-sm btn-default" title="Удалить" ng-click="deleteMaterial($index)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-success" ng-click="btnEdit()">Редактировать</button>
+    <button type="button" class="btn btn-success" ng-click="btnSave()">Сохранить</button>
+    <button type="button" class="btn btn-primary" ng-click="btnCancel()">Отменить</button>
+</div>
+
