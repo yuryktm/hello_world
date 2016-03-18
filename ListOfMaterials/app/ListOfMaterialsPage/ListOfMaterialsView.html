@@ -1,15 +1,3 @@
-<div class="list-group" ng-controller="listOfMaterialsCtrl">
-    <a href="#" class="list-group-item" ng-repeat="item in model.letters" ng-class="{'active': item.selected}" ng-click="select(item.id);">
-        <h4 class="list-group-item-heading" ng-class="{'not-read-letter': !item.readed}">
-            {{item.subject}}
-        </h4>
-        <input class="letter-check-box list-group-item-heading " ng-model="item.checked" type="checkbox">
-        <p class="list-group-item-text" ng-class="{'not-read-letter': !item.readed}">
-            {{item.who}}
-        </p>
-    </a>
-</div>
-
 <div ng-controller="listOfMaterialsCtrl">
     <table class="table table-bordered" style=";margin: 10px;">
         <caption>Перечень материалов</caption>
@@ -21,49 +9,57 @@
             <th>Критичность  С</th>
             <th>Число риска по материалу</th>
             <th>Уровень риска</th>
-            <th></th>
+            <th ng-show="!pageView"></th>
         </tr>
         </thead>
         <tbody>
             <tr ng-repeat="item in model.materials track by $index">
                 <td>
-                    <input type="text" ng-model="item.materialName" />
+                    <p ng-show="pageView">{{item.materialName}}</p>
+                    <input class="form-control" type="text" ng-model="item.materialName" ng-show="!pageView"/>
                 </td>
                 <td>
+                    <p ng-show="pageView">{{item.contactProductA}}</p>
                     <select class="form-control"
-                            ng-options="item.id as item.label for item in model.verificationRestrictionsDictionary"
-                            ng-model="item.contactProductA">
+                            ng-options="item as item for item in model.verificationRestrictionsDictionary"
+                            ng-model="item.contactProductA"
+                            ng-show="!pageView" ng-change="calculate($index)">
                     </select>
                 </td>
                 <td>
+                    <p ng-show="pageView">{{item.stagesProcessesB}}</p>
                     <select class="form-control"
-                            ng-options="item.id as item.label for item in model.verificationRestrictionsDictionary"
-                            ng-model="item.stagesProcessesB">
+                            ng-options="item as item for item in model.verificationRestrictionsDictionary"
+                            ng-model="item.stagesProcessesB"
+                            ng-show="!pageView"  ng-change="calculate($index)">
                     </select>
                 </td>
                 <td>
+                    <p ng-show="pageView">{{item.criticalityC}}</p>
                     <select class="form-control"
-                            ng-options="item.id as item.label for item in model.verificationRestrictionsDictionary"
-                            ng-model="item.criticalityC">
+                            ng-options="item as item for item in model.verificationRestrictionsDictionary"
+                            ng-model="item.criticalityC"
+                            ng-show="!pageView"  ng-change="calculate($index)">
                     </select>
                 </td>
                 <td>{{item.numberOfRiskForMaterial}}</td>
                 <td>{{item.levelOfRisk}}</td>
-                <td>
-                    <button class="set-value btn btn-sm btn-default" title="Добавить"
+                <td ng-show="!pageView">
+                    <button class="set-value btn btn-sm btn-default" title="Добавить" ng-show="model.materials.length == $index + 1"
                             ng-click="addMaterial()">
-                        <span class="glyphicon glyphicon-plus"></span>
+                        <span style="color: #265a88" class="glyphicon glyphicon-plus"></span>
                     </button>
                     <button class="remove-value btn btn-sm btn-default" title="Удалить" ng-click="deleteMaterial($index)">
-                        <span class="glyphicon glyphicon-remove"></span>
+                        <span style="color: red" class="glyphicon glyphicon-remove"></span>
                     </button>
                 </td>
             </tr>
         </tbody>
     </table>
-
-    <button type="button" class="btn btn-success" ng-click="btnEdit()">Редактировать</button>
-    <button type="button" class="btn btn-success" ng-click="btnSave()">Сохранить</button>
-    <button type="button" class="btn btn-primary" ng-click="btnCancel()">Отменить</button>
+    <div style="text-align: center;">
+        <button type="button" class="btn btn-success" ng-click="btnEdit()" ng-show="pageView">Редактировать</button>
+        <button type="button" class="btn btn-success" ng-click="btnSave()" ng-show="!pageView">Сохранить</button>
+        <button type="button" class="btn btn-primary" ng-click="btnCancel()" ng-show="!pageView">Отменить</button>
+    </div>
 </div>
 

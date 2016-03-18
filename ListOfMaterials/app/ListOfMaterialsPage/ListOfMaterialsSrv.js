@@ -17,8 +17,8 @@
                         contactProductA: "1",
                         stagesProcessesB: "1",
                         criticalityC: "1",
-                        numberOfRiskForMaterial: 1,
-                        levelOfRisk: ""
+                        numberOfRiskForMaterial: "1",
+                        levelOfRisk: "Низкий"
                 };
 
                 this.model.materials.push(newMaterial);
@@ -26,7 +26,43 @@
         };
 
         this.deleteMaterial = function(index){
+
             this.model.materials.splice(index, 1);
+
+            if(this.model.materials.length == 0){
+                this.addMaterial();
+            }
+        };
+
+        this.calculate = function(index){
+
+            //вычисление поля "Число риска по материалу"
+            var material = this.model.materials[index];
+            var a = parseFloat(material.contactProductA),
+                b = parseFloat(material.stagesProcessesB),
+                c = parseFloat(material.criticalityC),
+                resultNumberOfRiskForMaterial = "нет",
+                resultLevelOfRisk = "Высокий";
+
+            if(!isNaN(a) && !isNaN(b) && !isNaN(c)){
+                resultNumberOfRiskForMaterial = a * b * c;
+
+                //вычисление поля "Уровень риска"
+                if(resultNumberOfRiskForMaterial <= 4){
+                    resultLevelOfRisk = "Низкий";
+                }
+
+                if(resultNumberOfRiskForMaterial > 4 && resultNumberOfRiskForMaterial <= 27){
+                    resultLevelOfRisk = "Средний";
+                }
+
+                if(resultNumberOfRiskForMaterial > 27){
+                    resultLevelOfRisk = "Высокий";
+                }
+            }
+
+            this.model.materials[index].numberOfRiskForMaterial = resultNumberOfRiskForMaterial.toString();
+            this.model.materials[index].levelOfRisk = resultLevelOfRisk.toString();
         };
     }
 })();

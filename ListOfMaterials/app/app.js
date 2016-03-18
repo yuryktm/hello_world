@@ -1,6 +1,13 @@
-(function(){
+//(function(){
+//    angular.module("listOfMaterialsApp",
+//        [
+//            "listOfMaterials"
+//        ]);
+//})();
+
+
+
     angular.module("listOfMaterialsApp",
         [
-            "listOfMaterials"
+            "ListOfMaterialsPage/ListOfMaterialsCtrl"
         ]);
-})();
