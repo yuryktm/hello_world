@@ -1,7 +1,9 @@
 (function(){
     "use strict"
 
-    angular.module("myApp", [])
+    angular.module("myApp", [
+        "testSrv"
+    ])
         .run(runApp)
         .value("model", {
             user: {name: "User123", age: 15}
@@ -11,8 +13,10 @@
         .directive("taskList", taskList); //в разметке это деректива task-list
 
 
-    function myController($scope, model){
+    function myController($scope, model, srv){
        $scope.user = model.user;
+
+        var result = srv.getData();
 
     };
 
