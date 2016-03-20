@@ -5,14 +5,24 @@
     <title></title>
     <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="vendor/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
-    <link href="style/style.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet"/>
+
+    <!--<script type="text/javascript" src="vendor/angular/angular.min.js"></script>-->
+    <!--<script type="text/javascript" src="vendor/angularjs-loader/angularjs-loader.js" app="app"></script>-->
+    <script src="vendor/dojo/dojo.js" data-dojo-config="async: true"></script>
+    <script>
+        require([
+                "./app.js"
+        ], function(app){
+            app.exec();
+        });
+    </script>
+
 </head>
 <body>
 
     <div list-materials-dir></div>
 
-    <script type="text/javascript" src="vendor/angular/angular.min.js"></script>
-    <script type="text/javascript" src="vendor/angularjs-loader/angularjs-loader.js" app="app"></script>
 
     <!--<script src="vendor/angular/angular.min.js"></script>-->
     <!--<script src="app.js"></script>-->

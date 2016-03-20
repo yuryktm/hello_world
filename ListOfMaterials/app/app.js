@@ -5,9 +5,15 @@
 //        ]);
 //})();
 
+define([], function(){
+    return {
+        exec: function(){
 
+            angular.module("listOfMaterialsApp",
+                [
+                    "listOfMaterials"
+                ]);
+        }
+    }
 
-    angular.module("listOfMaterialsApp",
-        [
-            "ListOfMaterialsPage/ListOfMaterialsCtrl"
-        ]);
+});

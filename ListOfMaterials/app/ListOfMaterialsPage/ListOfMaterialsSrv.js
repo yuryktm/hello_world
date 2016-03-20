@@ -4,9 +4,10 @@
         .module("listOfMaterials")
         .service("listOfMaterialsServices", listOfMaterialsServices);
 
-    function listOfMaterialsServices(materialsValue){
+    function listOfMaterialsServices(materialsValue, $http){
         this.model = {};
-        this.model.materials = materialsValue.data.materials;
+        var model = this.model;
+       // this.model.materials = materialsValue.data.materials;
         this.model.verificationRestrictionsDictionary = materialsValue.data.verificationRestrictionsDictionary;
 
         this.addMaterial = function(){
@@ -32,6 +33,21 @@
             if(this.model.materials.length == 0){
                 this.addMaterial();
             }
+        };
+
+        this.getMaterials = function(){
+            $http.get('ListOfMaterialsPage/materials.json').success(function(data) {
+                model.materials = data.materials;
+            });
+
+            //$http({
+            //    method: 'GET',
+            //    url: 'https://http5bin.org/get'
+            //}).then(function successCallback(response) {
+            //        console.log(response);
+            //}, function errorCallback(response) {
+            //    console.log(response);
+            //});
         };
 
         this.calculate = function(index){
