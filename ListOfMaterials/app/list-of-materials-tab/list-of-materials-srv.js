@@ -4,9 +4,9 @@
         .module("ListOfMaterialsTab")
         .service("ListOfMaterialsServices", ListOfMaterialsServices);
 
-    ListOfMaterialsServices.$inject = ['materialsValue', '$http'];
+    ListOfMaterialsServices.$inject = ['materialsValue', 'DataProviderServices'];
 
-    function ListOfMaterialsServices(materialsValue, $http){
+    function ListOfMaterialsServices(materialsValue, dataProviderServices){
         this.model = {};
         var model = this.model;
        // this.model.materials = materialsValue.data.materials;
@@ -37,20 +37,15 @@
             }
         };
 
-        this.getMaterials = function(){
-            $http.get('list-of-materials-tab/materials.json').success(function(data) {
-                model.materials = data.materials;
-            });
 
-            //$http({
-            //    method: 'GET',
-            //    url: 'https://http5bin.org/get'
-            //}).then(function successCallback(response) {
-            //        console.log(response);
-            //}, function errorCallback(response) {
-            //    console.log(response);
-            //});
-        };
+        this.updateDate = getMaterials;
+
+        function getMaterials() {
+            return dataProviderServices.getMaterials().then(function(response) {
+                model.materials = response.data.materials;
+                //return data.materials;
+            });
+        }
 
         this.calculate = function(index){
 

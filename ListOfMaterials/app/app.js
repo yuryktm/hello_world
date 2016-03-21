@@ -1,6 +1,7 @@
 (function(){
     angular.module("app",
         [
-            "ListOfMaterialsTab"
+            "DataProvider",
+           "ListOfMaterialsTab"
         ]);
 })();

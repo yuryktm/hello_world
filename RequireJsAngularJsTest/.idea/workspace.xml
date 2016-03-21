@@ -222,7 +222,7 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ListOfMaterials" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../management_letters" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">

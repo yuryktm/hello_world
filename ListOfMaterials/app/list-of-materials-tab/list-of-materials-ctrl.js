@@ -8,7 +8,7 @@
     function ListOfMaterialsCtrl($scope, listOfMaterialsServices){
         $scope.model = listOfMaterialsServices.model;
 
-        listOfMaterialsServices.getMaterials();
+        listOfMaterialsServices.updateDate();
 
         $scope.deleteMaterial = function(index){
             listOfMaterialsServices.deleteMaterial(index);
