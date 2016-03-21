@@ -1,13 +1,7 @@
-//(function(){
-//    angular.module("listOfMaterialsApp",
-//        [
-//            "listOfMaterials"
-//        ]);
-//})();
-
-
-
-    angular.module("listOfMaterialsApp",
+(function(){
+    angular.module("app",
         [
-            "ListOfMaterialsPage/ListOfMaterialsCtrl"
+            "DataProvider",
+           "ListOfMaterialsTab"
         ]);
+})();

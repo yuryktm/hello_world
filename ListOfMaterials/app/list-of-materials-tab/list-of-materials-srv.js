@@ -1,12 +1,15 @@
 (function(){
     "use strict";
     angular
-        .module("listOfMaterials")
-        .service("listOfMaterialsServices", listOfMaterialsServices);
+        .module("ListOfMaterialsTab")
+        .service("ListOfMaterialsServices", ListOfMaterialsServices);
 
-    function listOfMaterialsServices(materialsValue){
+    ListOfMaterialsServices.$inject = ['materialsValue', 'DataProviderServices'];
+
+    function ListOfMaterialsServices(materialsValue, dataProviderServices){
         this.model = {};
-        this.model.materials = materialsValue.data.materials;
+        var model = this.model;
+       // this.model.materials = materialsValue.data.materials;
         this.model.verificationRestrictionsDictionary = materialsValue.data.verificationRestrictionsDictionary;
 
         this.addMaterial = function(){
@@ -33,6 +36,16 @@
                 this.addMaterial();
             }
         };
+
+
+        this.updateDate = getMaterials;
+
+        function getMaterials() {
+            return dataProviderServices.getMaterials().then(function(response) {
+                model.materials = response.data.materials;
+                //return data.materials;
+            });
+        }
 
         this.calculate = function(index){
 

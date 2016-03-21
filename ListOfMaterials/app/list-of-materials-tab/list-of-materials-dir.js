@@ -1,13 +1,15 @@
 (function(){
     "use strict";
     angular
-        .module("listOfMaterials")
+        .module("ListOfMaterialsTab")
         .directive("listMaterialsDir", listMaterialsDir);
+
+    listMaterialsDir.$inject = [];
 
     function listMaterialsDir(){
         return {
             restrict: "A",
-            templateUrl: "ListOfMaterialsPage/ListOfMaterialsView.html"
+            templateUrl: "list-of-materials-tab/list-of-materials-view.html"
         }
     }
 })();

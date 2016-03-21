@@ -1,4 +1,4 @@
-<div ng-controller="listOfMaterialsCtrl">
+<div ng-controller="ListOfMaterialsCtrl">
     <table class="table table-bordered" style=";margin: 10px;">
         <caption>Перечень материалов</caption>
         <thead>
@@ -16,7 +16,7 @@
             <tr ng-repeat="item in model.materials track by $index">
                 <td>
                     <p ng-show="pageView">{{item.materialName}}</p>
-                    <input class="form-control" type="text" ng-model="item.materialName" ng-show="!pageView"/>
+                    <input class="form-control" type="text" ng-model="item.materialName" ng-show="!pageView" maxlength="256"/>
                 </td>
                 <td>
                     <p ng-show="pageView">{{item.contactProductA}}</p>

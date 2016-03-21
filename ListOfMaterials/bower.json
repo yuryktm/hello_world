@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "authors": ["Yury"],
   "dependencies": {
-    "angular": "~1.4.0",
-    "bootstrap": "~3.3.5",
-    "angularjs-loader": "*"
+    "angular": "*",
+    "bootstrap": "*"
   }
 }

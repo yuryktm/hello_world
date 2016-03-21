@@ -1,0 +1,21 @@
+{
+  "materials": [
+    {
+      "materialName": "zxczcxzcv",
+      "contactProductA": "2",
+      "stagesProcessesB": "3",
+      "criticalityC": "5",
+      "numberOfRiskForMaterial": "33",
+      "levelOfRisk": "Средний"
+    },
+    {
+      "materialName": "asdfkjhskjd",
+      "contactProductA": "5",
+      "stagesProcessesB": "4",
+      "criticalityC": "2",
+      "numberOfRiskForMaterial": "33",
+      "levelOfRisk": "Средний"
+    }
+
+  ]
+}
