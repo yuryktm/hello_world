@@ -1,9 +1,11 @@
 (function(){
     "use strict";
-    angular.module("listOfMaterials")
-        .controller("listOfMaterialsCtrl", listOfMaterialsCtrl);
+    angular.module("ListOfMaterialsTab")
+        .controller("ListOfMaterialsCtrl", ListOfMaterialsCtrl);
 
-    function listOfMaterialsCtrl($scope, listOfMaterialsServices){
+    ListOfMaterialsCtrl.$inject = ['$scope', 'ListOfMaterialsServices'];
+
+    function ListOfMaterialsCtrl($scope, listOfMaterialsServices){
         $scope.model = listOfMaterialsServices.model;
 
         listOfMaterialsServices.getMaterials();
@@ -32,18 +34,9 @@
             $scope.pageView = !$scope.pageView;
         }
 
-        //$scope.$watch('model.materials', function() {
-        //    console.log('hey, myVar has changed!');
-        //});
-
+        //calculate
         $scope.calculate = function(index){
             listOfMaterialsServices.calculate(index);
         }
-
     }
 })();
-//
-//angular.module('ListOfMaterialsPage.ListOfMaterialsCtrl', []).controller('listOfMaterialsCtrl', function() {
-//    //this.value = 'Hello World!';
-//    console.log("test");
-//});

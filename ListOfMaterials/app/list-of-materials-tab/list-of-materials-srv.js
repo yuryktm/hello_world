@@ -1,10 +1,12 @@
 (function(){
     "use strict";
     angular
-        .module("listOfMaterials")
-        .service("listOfMaterialsServices", listOfMaterialsServices);
+        .module("ListOfMaterialsTab")
+        .service("ListOfMaterialsServices", ListOfMaterialsServices);
 
-    function listOfMaterialsServices(materialsValue, $http){
+    ListOfMaterialsServices.$inject = ['materialsValue', '$http'];
+
+    function ListOfMaterialsServices(materialsValue, $http){
         this.model = {};
         var model = this.model;
        // this.model.materials = materialsValue.data.materials;
@@ -36,7 +38,7 @@
         };
 
         this.getMaterials = function(){
-            $http.get('ListOfMaterialsPage/materials.json').success(function(data) {
+            $http.get('list-of-materials-tab/materials.json').success(function(data) {
                 model.materials = data.materials;
             });
 
