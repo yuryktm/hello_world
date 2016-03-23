@@ -1,7 +1,7 @@
 (function(){
     "use strict";
     angular
-        .module("ListOfMaterialsTab")
+        .module("vendor.view")
         .directive("listMaterialsDir", listMaterialsDir);
 
     listMaterialsDir.$inject = [];

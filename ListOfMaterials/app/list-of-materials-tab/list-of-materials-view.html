@@ -1,6 +1,6 @@
 <div ng-controller="ListOfMaterialsCtrl">
-    <table class="table table-bordered" style=";margin: 10px;">
-        <caption>Перечень материалов</caption>
+    <div data-spy="scroll">
+        <table class="table table-bordered" style=";margin: 10px;">
         <thead>
         <tr>
             <th>Наименование материала/услуги</th>
@@ -16,7 +16,7 @@
             <tr ng-repeat="item in model.materials track by $index">
                 <td>
                     <p ng-show="pageView">{{item.materialName}}</p>
-                    <input class="form-control" type="text" ng-model="item.materialName" ng-show="!pageView" maxlength="256"/>
+                    <input class="form-control" ng-class="{redBorder: !item.materialName}" type="text" ng-model="item.materialName" ng-show="!pageView" maxlength="256"/>
                 </td>
                 <td>
                     <p ng-show="pageView">{{item.contactProductA}}</p>
@@ -42,7 +42,14 @@
                             ng-show="!pageView"  ng-change="calculate($index)">
                     </select>
                 </td>
-                <td>{{item.numberOfRiskForMaterial}}</td>
+                <td>
+                    <p ng-show="pageView">{{item.numberOfRiskForMaterial}}</p>
+                    <select class="form-control"
+                            ng-options="item as item for item in model.numberRiskMaterialDictionary"
+                            ng-model="item.numberOfRiskForMaterial"
+                            ng-show="!pageView"  ng-change="calculate($index)">
+                    </select>
+                </td>
                 <td>{{item.levelOfRisk}}</td>
                 <td ng-show="!pageView">
                     <button class="set-value btn btn-sm btn-default" title="Добавить" ng-show="model.materials.length == $index + 1"
@@ -56,6 +63,7 @@
             </tr>
         </tbody>
     </table>
+    </div>
     <div style="text-align: center;">
         <button type="button" class="btn btn-success" ng-click="btnEdit()" ng-show="pageView">Редактировать</button>
         <button type="button" class="btn btn-success" ng-click="btnSave()" ng-show="!pageView">Сохранить</button>

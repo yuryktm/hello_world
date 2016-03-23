@@ -1,7 +1,7 @@
 (function(){
-    angular.module("app",
+    angular.module("vendor.view",
         [
-            "DataProvider",
-           "ListOfMaterialsTab"
+           // "DataProvider",
+           //"ListOfMaterialsTab"
         ]);
 })();
