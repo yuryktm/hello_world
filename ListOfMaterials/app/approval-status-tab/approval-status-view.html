@@ -1,0 +1,31 @@
+<div ng-controller="ListApprovalStatusCtrl">
+    <div style="padding: 10px;">
+        <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Статус</th>
+            <th>Обоснование присвоение статуса</th>
+            <th>Дата согласования с УЛ</th>
+            <th>Ссылка на БП</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in model.approvalStatusList track by $index">
+                <td>
+                    {{item.status}}
+                </td>
+                <td>
+                    {{item.justificationAssignmentStatus}}
+                </td>
+                <td>
+                    {{item.approvalDate}}
+                </td>
+                <td>
+                    <a href="{{item.link}}" target="_blank">{{item.link}}</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+

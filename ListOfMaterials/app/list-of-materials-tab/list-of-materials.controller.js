@@ -16,7 +16,7 @@
 
         $scope.addMaterial = function(){
             listOfMaterialsServices.addMaterial();
-        }
+        };
 
         //режим отображение стр, true - просмотр, false - редактирование
         $scope.pageView = true;
@@ -24,7 +24,7 @@
         //calculate
         $scope.calculate = function(index){
             listOfMaterialsServices.calculate(index);
-        }
+        };
 
         //***************************************** кнопки
         $scope.btnEdit = function(){
@@ -33,12 +33,12 @@
                 $scope.oldMaterials = angular.copy($scope.model.materials);
                 $scope.pageView = !$scope.pageView;
             //}
-        }
+        };
 
         $scope.btnCancel = function(){
             $scope.model.materials = $scope.oldMaterials;
             $scope.pageView = !$scope.pageView;
-        }
+        };
 
         $scope.btnSave = function(){
 
@@ -53,6 +53,6 @@
             listOfMaterialsServices.saveMaterials(function(){
                 $scope.pageView = !$scope.pageView;
             });
-        }
+        };
     }
 })();

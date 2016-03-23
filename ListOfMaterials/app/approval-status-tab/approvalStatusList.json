@@ -1,0 +1,16 @@
+{
+  "approvalStatusList": [
+    {
+      "status": "Статус ДБП 1",
+      "justificationAssignmentStatus": "Текст ДБП 1",
+      "approvalDate": "11.11.2012",
+      "link": "link123"
+    },
+    {
+      "status": "Статус ДБП 2",
+      "justificationAssignmentStatus": "Текст ДБП 2",
+      "approvalDate": "9.9.2015",
+      "link": "link56867856"
+    }
+  ]
+}
