@@ -13,6 +13,11 @@
         this.model.verificationRestrictionsDictionary = consts.VERIFICATION_RESTRICTIONS_DICTIONARY;
         this.model.numberRiskMaterialDictionary = consts.NUMBER_RISK_MATERIAL_DICTIONARY;
 
+        this.model.pageMode = { pageView: true };
+        this.getPageMode = function(){
+            return this.model.pageMode;
+        };
+
         this.addMaterial = function(){
 
             if(this.model.materials.length < 50){//ограничение на количество строк
@@ -39,6 +44,7 @@
         };
 
         this.getMaterials = function(){
+            console.log('getMaterials');
             $http.get(consts.URL_GET)
                 .then(function(response){
                     if(response.data){

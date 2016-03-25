@@ -9,6 +9,6 @@
 
         $scope.model = listApprovalStatusServices.model;
 
-        listApprovalStatusServices.getApprovalStatusList();
+        //listApprovalStatusServices.getApprovalStatusList();
     }
 })();

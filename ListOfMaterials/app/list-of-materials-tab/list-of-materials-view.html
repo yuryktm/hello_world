@@ -9,49 +9,49 @@
             <th>Критичность  С</th>
             <th>Число риска по материалу</th>
             <th>Уровень риска</th>
-            <th ng-show="!pageView"></th>
+            <th ng-show="!pageMode.pageView"></th>
         </tr>
         </thead>
         <tbody>
             <tr ng-repeat="item in model.materials track by $index">
                 <td>
-                    <p ng-show="pageView">{{item.materialName}}</p>
-                    <input class="form-control" ng-class="{redBorder: !item.materialName}" type="text" ng-model="item.materialName" ng-show="!pageView" maxlength="256"/>
+                    <p ng-show="pageMode.pageView">{{item.materialName}}</p>
+                    <input class="form-control" ng-class="{redBorder: !item.materialName}" type="text" ng-model="item.materialName" ng-show="!pageMode.pageView" maxlength="256"/>
                 </td>
                 <td>
-                    <p ng-show="pageView">{{item.contactProductA}}</p>
+                    <p ng-show="pageMode.pageView">{{item.contactProductA}}</p>
                     <select class="form-control"
                             ng-options="item as item for item in model.verificationRestrictionsDictionary"
                             ng-model="item.contactProductA"
-                            ng-show="!pageView" ng-change="calculate($index)">
+                            ng-show="!pageMode.pageView" ng-change="calculate($index)">
                     </select>
                 </td>
                 <td>
-                    <p ng-show="pageView">{{item.stagesProcessesB}}</p>
+                    <p ng-show="pageMode.pageView">{{item.stagesProcessesB}}</p>
                     <select class="form-control"
                             ng-options="item as item for item in model.verificationRestrictionsDictionary"
                             ng-model="item.stagesProcessesB"
-                            ng-show="!pageView"  ng-change="calculate($index)">
+                            ng-show="!pageMode.pageView"  ng-change="calculate($index)">
                     </select>
                 </td>
                 <td>
-                    <p ng-show="pageView">{{item.criticalityC}}</p>
+                    <p ng-show="pageMode.pageView">{{item.criticalityC}}</p>
                     <select class="form-control"
                             ng-options="item as item for item in model.verificationRestrictionsDictionary"
                             ng-model="item.criticalityC"
-                            ng-show="!pageView"  ng-change="calculate($index)">
+                            ng-show="!pageMode.pageView"  ng-change="calculate($index)">
                     </select>
                 </td>
                 <td>
-                    <p ng-show="pageView">{{item.numberOfRiskForMaterial}}</p>
+                    <p ng-show="pageMode.pageView">{{item.numberOfRiskForMaterial}}</p>
                     <select class="form-control"
                             ng-options="item as item for item in model.numberRiskMaterialDictionary"
                             ng-model="item.numberOfRiskForMaterial"
-                            ng-show="!pageView"  ng-change="calculate($index)">
+                            ng-show="!pageMode.pageView"  ng-change="calculate($index)">
                     </select>
                 </td>
                 <td>{{item.levelOfRisk}}</td>
-                <td ng-show="!pageView">
+                <td ng-show="!pageMode.pageView">
                     <button class="set-value btn btn-sm btn-default" title="Добавить" ng-show="model.materials.length == $index + 1"
                             ng-click="addMaterial()">
                         <span style="color: #265a88" class="glyphicon glyphicon-plus"></span>
@@ -65,9 +65,9 @@
     </table>
     </div>
     <div style="text-align: center;">
-        <button type="button" class="btn btn-success" ng-click="btnEdit()" ng-show="pageView">Редактировать</button>
-        <button type="button" class="btn btn-success" ng-click="btnSave()" ng-show="!pageView">Сохранить</button>
-        <button type="button" class="btn btn-primary" ng-click="btnCancel()" ng-show="!pageView">Отменить</button>
+        <button type="button" class="btn btn-success" ng-click="btnEdit()" ng-show="pageMode.pageView">Редактировать</button>
+        <button type="button" class="btn btn-success" ng-click="btnSave()" ng-show="!pageMode.pageView">Сохранить</button>
+        <button type="button" class="btn btn-primary" ng-click="btnCancel()" ng-show="!pageMode.pageView">Отменить</button>
     </div>
 </div>
 

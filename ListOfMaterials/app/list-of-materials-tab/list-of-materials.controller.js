@@ -8,7 +8,8 @@
     function ListOfMaterialsCtrl($scope, listOfMaterialsServices){
         $scope.model = listOfMaterialsServices.model;
 
-        listOfMaterialsServices.getMaterials();
+        //режим отображение стр, true - просмотр, false - редактирование
+        $scope.pageMode = listOfMaterialsServices.model.pageMode;
 
         $scope.deleteMaterial = function(index){
             listOfMaterialsServices.deleteMaterial(index);
@@ -17,9 +18,6 @@
         $scope.addMaterial = function(){
             listOfMaterialsServices.addMaterial();
         };
-
-        //режим отображение стр, true - просмотр, false - редактирование
-        $scope.pageView = true;
 
         //calculate
         $scope.calculate = function(index){
@@ -31,13 +29,13 @@
 
             //if($scope.access){todo:access
                 $scope.oldMaterials = angular.copy($scope.model.materials);
-                $scope.pageView = !$scope.pageView;
+                $scope.pageMode.pageView = !$scope.pageMode.pageView;
             //}
         };
 
         $scope.btnCancel = function(){
             $scope.model.materials = $scope.oldMaterials;
-            $scope.pageView = !$scope.pageView;
+            $scope.pageMode.pageView = !$scope.pageMode.pageView;
         };
 
         $scope.btnSave = function(){
@@ -51,7 +49,7 @@
             if(!validate()){return;}
 
             listOfMaterialsServices.saveMaterials(function(){
-                $scope.pageView = !$scope.pageView;
+                $scope.pageMode.pageView = !$scope.pageView;
             });
         };
     }
