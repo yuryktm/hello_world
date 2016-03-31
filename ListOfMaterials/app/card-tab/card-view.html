@@ -1,0 +1,145 @@
+<div ng-controller="CardCtrl">
+    <div style="padding: 10px;">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <label>Системный номер: </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{model.card.systemNumber}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <label>Наименование<span style="color: red">*</span>:</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{model.card.name}}
+            </div>
+        </div>
+
+        <table style="width:100%">
+            <tr>
+                <td style="float: right">
+
+                </td>
+                <td style="padding-left: 15px;">
+
+            </tr>
+            <tr>
+                <td style="float: right">
+                    <label>Наименование<span style="color: red">*</span>:</label>
+                </td>
+                <td style="padding-left: 15px;"><%= name %></td>
+            </tr>
+            <tr>
+                <td style="float: right">
+                    <label>Контактные данные<span style="color: red">*</span>:</label>
+                </td>
+                <td style="padding-left: 15px;"><textarea rows="3" cols="50" style="resize: none;  border: 0 none #FFF; overflow: hidden;" ><%= contactDetails %>
+    </textarea></td>
+            </tr>
+            <tr style="color: gray">
+                <td style="float: right">
+                    <label>Статус: </label>
+                </td>
+                <td style="padding-left: 15px;"><b ><%= status %></b></td>
+            </tr>
+            <tr>
+                <td style="float: right">
+                    <label>Соглашение о качестве:</label>
+                </td>
+                <td style="padding-left: 15px;"><a href=""><%= agreementQualityFile %></a></td>
+            </tr>
+            <tr>
+                <td style="float: right">
+                    <label>Тип поставщика:</label>
+                </td>
+                <td style="padding-left: 15px;"><span ><%= vendorType%></span></td>
+            </tr>
+            <td style="float: right">
+                <label>Необходимость выездного аудита:</label>
+            </td>
+            <td style="padding-left: 15px;">
+                <input type="checkbox" <%= needForAudit ? "checked='checked'" : "" %> disabled="disabled"/>
+            </td>
+            </tr>
+        </table>
+        <hr/>
+
+
+        <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Наименование материала/услуги</th>
+            <th>Контакт с продуктом А</th>
+            <th>Стадия процесса B</th>
+            <th>Критичность  С</th>
+            <th>Число риска по материалу</th>
+            <th>Уровень риска</th>
+            <th ng-show="!pageMode.pageView"></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in model.materials track by $index">
+                <td>
+                    <p ng-show="pageMode.pageView">{{item.materialName}}</p>
+                    <input class="form-control" ng-class="{redBorder: !item.materialName}" type="text" ng-model="item.materialName" ng-show="!pageMode.pageView" maxlength="256"/>
+                </td>
+                <td>
+                    <p ng-show="pageMode.pageView">{{item.contactProductA}}</p>
+                    <select class="form-control"
+                            ng-options="item as item for item in model.verificationRestrictionsDictionary"
+                            ng-model="item.contactProductA"
+                            ng-show="!pageMode.pageView" ng-change="calculate($index)">
+                    </select>
+                </td>
+                <td>
+                    <p ng-show="pageMode.pageView">{{item.stagesProcessesB}}</p>
+                    <select class="form-control"
+                            ng-options="item as item for item in model.verificationRestrictionsDictionary"
+                            ng-model="item.stagesProcessesB"
+                            ng-show="!pageMode.pageView"  ng-change="calculate($index)">
+                    </select>
+                </td>
+                <td>
+                    <p ng-show="pageMode.pageView">{{item.criticalityC}}</p>
+                    <select class="form-control"
+                            ng-options="item as item for item in model.verificationRestrictionsDictionary"
+                            ng-model="item.criticalityC"
+                            ng-show="!pageMode.pageView"  ng-change="calculate($index)">
+                    </select>
+                </td>
+                <td>
+                    <p ng-show="pageMode.pageView">{{item.numberOfRiskForMaterial}}</p>
+                    <select class="form-control"
+                            ng-options="item as item for item in model.numberRiskMaterialDictionary"
+                            ng-model="item.numberOfRiskForMaterial"
+                            ng-show="!pageMode.pageView"  ng-change="calculate($index)">
+                    </select>
+                </td>
+                <td>{{item.levelOfRisk}}</td>
+                <td ng-show="!pageMode.pageView">
+                    <button class="set-value btn btn-sm btn-default" title="Добавить" ng-show="model.materials.length == $index + 1"
+                            ng-click="addMaterial()">
+                        <span style="color: #265a88" class="glyphicon glyphicon-plus"></span>
+                    </button>
+                    <button class="remove-value btn btn-sm btn-default" title="Удалить" ng-click="deleteMaterial($index)">
+                        <span style="color: red" class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div style="text-align: center;">
+        <button type="button" class="btn btn-success" ng-click="btnEdit()" ng-show="pageMode.pageView">Редактировать</button>
+        <button type="button" class="btn btn-success" ng-click="btnSave()" ng-show="!pageMode.pageView">Сохранить</button>
+        <button type="button" class="btn btn-primary" ng-click="btnCancel()" ng-show="!pageMode.pageView">Отменить</button>
+    </div>
+</div>
+
