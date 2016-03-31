@@ -9,8 +9,7 @@
     function listMaterialsDir(){
         return {
             restrict: "A",
-            templateUrl: "list-of-materials-tab/list-of-materials-view.html",
-            require: "tabDir"
+            templateUrl: "list-of-materials-tab/list-of-materials-view.html"
         }
     }
 })();
