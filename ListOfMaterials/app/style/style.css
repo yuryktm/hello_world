@@ -17,3 +17,9 @@
     left: 50%;
     position: absolute;
 }
+
+.required:after {
+    content: "*";
+    font-weight: bold;
+    color: red;
+}

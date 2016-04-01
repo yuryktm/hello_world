@@ -10,13 +10,11 @@
   "auditFiles": [
     {
       "files": [{"fileName": "file1.docx"}, {"fileName": "file2.docx"}],
-      "auditDate": "1.1.2020",
-      "resultsConfirmAuditDate": "2.2.2022"
+      "auditDate": "1.1.2020"
     },
     {
       "files": [{"fileName": "file7.docx"}],
-      "auditDate": "1.7.2010",
-      "resultsConfirmAuditDate": "2.2.2022"
+      "auditDate": "1.7.2010"
     }
   ],
   "vendorWorksheets": [

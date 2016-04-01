@@ -45,7 +45,7 @@
 
         this.getMaterials = function(){
             console.log('getMaterials');
-            $http.get(consts.URL_GET)
+            $http.get(consts.LIST_OF_MATERIALS_TAB_URL_GET)
                 .then(function(response){
                     if(response.data){
                         model.materials = response.data.materials;
@@ -57,7 +57,7 @@
         };
 
         this.saveMaterials = function(callback){
-            $http.post(consts.URL_POST, {"data": model.materials})
+            $http.post(consts.LIST_OF_MATERIALS_TAB_URL_POST, {"data": model.materials})
                 .then(function(response){
                     callback();
                 },function(response){

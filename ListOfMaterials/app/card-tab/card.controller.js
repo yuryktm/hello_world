@@ -11,18 +11,31 @@
         //режим отображение стр, true - просмотр, false - редактирование
         $scope.pageMode = cardServices.model.pageMode;
 
-        //$scope.deleteMaterial = function(index){
-        //    listOfMaterialsServices.deleteMaterial(index);
-        //};
-        //
-        //$scope.addMaterial = function(){
-        //    listOfMaterialsServices.addMaterial();
-        //};
+        $scope.addAudit = function(){
+            cardServices.addAudit();
+        };
 
-        //calculate
-        //$scope.calculate = function(index){
-        //    listOfMaterialsServices.calculate(index);
-        //};
+        $scope.deleteAudit = function(index, fileIndex){
+            cardServices.deleteAudit(index, fileIndex);
+        };
+
+        $scope.addAuditFile = function(index){
+            cardServices.addAuditFile(index);
+        };
+
+        $scope.deleteAuditFile = function(index){
+            cardServices.deleteAuditFile(index);
+        };
+
+        /*************************************************************************************************************/
+
+        $scope.addVendorWorksheet = function(){
+            cardServices.addVendorWorksheet();
+        };
+
+        $scope.deleteVendorWorksheet = function(index){
+            cardServices.deleteVendorWorksheet(index);
+        };
 
         //***************************************** кнопки
         $scope.btnEdit = function(){
