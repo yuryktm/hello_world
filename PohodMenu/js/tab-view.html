@@ -1,0 +1,20 @@
+<div style="padding: 5px 1px 1px 1px;" ng-controller="TabCtrl">
+
+    <ul class="nav nav-tabs">
+        <li ng-class="{active:isSet('card')}"><a href ng-click="setTab('card')" data-toggle="tab">Карточка</a></li>
+        <li ng-class="{active:isSet('list-materials')}"><a href ng-click="setTab('list-materials')" data-toggle="tab">Карточка</a></li>
+        <li ng-class="{active:isSet('list-approval-status')}"><a href ng-click="setTab('list-approval-status')" data-toggle="tab">Оценка соответствия</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div ng-class="{active:isSet('card')}" class="tab-pane">
+            <div card-dir></div>
+        </div>
+        <div ng-class="{active:isSet('list-materials')}" class="tab-pane">
+            <div list-materials-dir></div>
+        </div>
+        <div ng-class="{active:isSet('list-approval-status')}" class="tab-pane">
+            <div list-approval-status-dir></div>
+        </div>
+    </div>
+</div>

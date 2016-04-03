@@ -1,0 +1,25 @@
+
+.redBorder {
+    border-color: red;
+}
+
+/*preloader*/
+.preloader {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: none;
+}
+.preloader img {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+}
+
+.required:after {
+    content: "*";
+    font-weight: bold;
+    color: red;
+}

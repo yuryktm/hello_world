@@ -1,0 +1,9 @@
+{
+  "name": "PohodMenu",
+  "version": "0.0.1",
+  "authors": ["Yury"],
+  "dependencies": {
+    "angular": "latest",
+    "bootstrap": "latest"
+  }
+}

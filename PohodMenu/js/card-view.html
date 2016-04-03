@@ -1,0 +1,192 @@
+<div ng-controller="CardCtrl">
+    <div style="padding: 10px;">
+
+        <!--Системный номер-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <label>Системный номер:</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{model.card.systemNumber}}
+            </div>
+        </div>
+        <!--Наименование-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <label class="required">Наименование</label><label>:</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{model.card.name}}
+            </div>
+        </div>
+        <!--Контактные данные-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <label class="required">Контактные данные</label><label>:</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <textarea rows="3" cols="50" style="resize: none;  border: 0 none #FFF; overflow: hidden;" >{{model.card.contactDetails}}</textarea>
+            </div>
+        </div>
+        <!--Статус-->
+        <div class="row" style="color: gray">
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <label>Статус:</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <b>{{model.card.status}}</b>
+            </div>
+        </div>
+        <!--Соглашение о качестве-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <label>Соглашение о качестве:</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <a href="">{{model.card.agreementQualityFile}}</a>
+            </div>
+        </div>
+        <!--Тип поставщика-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <label>Тип поставщика:</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{model.card.vendorType}}
+            </div>
+        </div>
+        <!--Необходимость выездного аудита-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <label>Необходимость выездного аудита:</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <input type="checkbox" ng-model="model.card.vendorType" disabled="disabled"/>
+            </div>
+        </div>
+
+        <hr/><!--************************************************************************************************-->
+
+        <!--Файлы вложения аудита-->
+        <table class="table table-bordered">
+            <caption>Файлы вложения аудита:</caption>
+        <thead>
+            <tr>
+                <th>Файл</th>
+                <th>Дата проведения аудита</th>
+                <th ng-show="!pageMode.pageView" style="width: 150px">Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in model.card.auditFiles track by $index">
+                <td>
+                <div ng-repeat="file in item.files track by $index" >
+
+                    <a ng-show="pageMode.pageView" href="">{{file.fileName}}</a>
+
+                    <div class="input-group" ng-show="!pageMode.pageView">
+                        <input type="file" class="form-control" placeholder="Добавте новый файл ..." ng-model="file.fileName">
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">...</button>
+                            <button class="btn btn-default" title="Добавить" ng-show="item.files.length == $index + 1" ng-click="addAuditFile($parent.$index)">
+                              <span style="color: #265a88" class="glyphicon glyphicon-plus"></span>
+                            </button>
+                            <button class="btn btn-default" title="Удалить" ng-click="deleteAuditFile($parent.$index, $index)">
+                                  <span style="color: red" class="glyphicon glyphicon-remove"></span>
+                              </button>
+                          </span>
+                    </div>
+
+                    <!--<div ng-show="!pageMode.pageView" style="display: inline;">-->
+                        <!--<button class="set-value btn btn-sm btn-default" title="Добавить" ng-show="item.files.length == $index + 1"-->
+                                <!--ng-click="addAuditFile($parent.$index)">-->
+                            <!--<span style="color: #265a88" class="glyphicon glyphicon-plus"></span>-->
+                        <!--</button>-->
+                        <!--<button class="remove-value btn btn-sm btn-default" title="Удалить" ng-click="deleteAuditFile($parent.$index, $index)">-->
+                            <!--<span style="color: red" class="glyphicon glyphicon-remove"></span>-->
+                        <!--</button>-->
+                    <!--</div>-->
+
+                    <br/>
+
+                    <!--<p ng-show="pageMode.pageView">{{item.materialName}}</p>-->
+                    <!--<input class="form-control" ng-class="{redBorder: !item.materialName}" type="text" ng-model="item.materialName" ng-show="!pageMode.pageView" maxlength="256"/>-->
+                </div>
+                <td>
+                    <p ng-show="pageMode.pageView">{{item.auditDate}}</p>
+                </td>
+                <td ng-show="!pageMode.pageView">
+                    <button class="btn btn-default" title="Добавить" ng-show="model.card.auditFiles.length == $index + 1"
+                            ng-click="addAudit()">
+                        <span style="color: #265a88" class="glyphicon glyphicon-plus"></span>
+                    </button>
+                    <button class="btn btn-default" title="Удалить" ng-click="deleteAudit($index)">
+                        <span style="color: red" class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!--*************************************************************************************************************************************-->
+    <!--Анкета поставщика-->
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Анкета поставщика</th>
+            <th>Дата отправки</th>
+            <th>Дата получения</th>
+            <th ng-show="!pageMode.pageView" style="width: 150px">Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="vendorWorksheet in model.card.vendorWorksheets track by $index">
+            <td>
+                <div ng-repeat="worksheet in vendorWorksheet.worksheets ">
+
+                    <a href="">{{worksheet.fileName}}</a><br/>
+
+                    <!--<p ng-show="pageMode.pageView">{{item.materialName}}</p>-->
+                    <!--<input class="form-control" ng-class="{redBorder: !item.materialName}" type="text" ng-model="item.materialName" ng-show="!pageMode.pageView" maxlength="256"/>-->
+                </div>
+            <td>
+                <p ng-show="pageMode.pageView">{{vendorWorksheet.auditDate}}</p>
+            </td>
+            <td>
+                <p ng-show="pageMode.pageView">{{vendorWorksheet.receivedDate}}</p>
+
+            </td>
+            <td ng-show="!pageMode.pageView">
+                <button class="btn btn-default" title="Добавить" ng-show="model.card.vendorWorksheets.length == $index + 1"
+                        ng-click="addVendorWorksheet()">
+                    <span style="color: #265a88" class="glyphicon glyphicon-plus"></span>
+                </button>
+                <button class="btn btn-default" title="Удалить" ng-click="deleteVendorWorksheet($index)">
+                    <span style="color: red" class="glyphicon glyphicon-remove"></span>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    </div>
+    <div style="text-align: center;">
+        <button type="button" class="btn btn-success" ng-click="btnEdit()" ng-show="pageMode.pageView">Редактировать</button>
+        <button type="button" class="btn btn-success" ng-click="btnSave()" ng-show="!pageMode.pageView">Сохранить</button>
+        <button type="button" class="btn btn-primary" ng-click="btnCancel()" ng-show="!pageMode.pageView">Отменить</button>
+    </div>
+</div>
+

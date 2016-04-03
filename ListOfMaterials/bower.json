@@ -4,6 +4,7 @@
   "authors": ["Yury"],
   "dependencies": {
     "angular": "*",
-    "bootstrap": "*"
+    "bootstrap": "*",
+    "angular-bootstrap-file-field": "*"
   }
 }
