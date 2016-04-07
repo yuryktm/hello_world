@@ -1,4 +1,18 @@
 <div ng-controller="ListApprovalStatusCtrl">
+
+    <p class="input-group">
+        <input type="text" class="form-control"
+               uib-datepicker-popup="dd/MM/yyyy"
+               ng-model="dt"
+               is-open="opened"
+               datepicker-options="dateOptions"
+               ng-required="true"
+               show-button-bar="false"/>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+    </p>
+
     <div style="padding: 10px;">
         <table class="table table-bordered">
         <thead>
@@ -26,6 +40,7 @@
             </tr>
         </tbody>
     </table>
+
     </div>
 </div>
 

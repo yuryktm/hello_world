@@ -3,9 +3,9 @@
     angular.module("vendor.view")
         .controller("TabCtrl", TabCtrl);
 
-    TabCtrl.$inject = ['$scope', 'ListOfMaterialsServices', 'ListApprovalStatusServices', 'CardServices', '$location'];
+    TabCtrl.$inject = ['$scope', '$uibModal', 'ListOfMaterialsServices', 'ListApprovalStatusServices', 'CardServices', '$location'];
 
-    function TabCtrl($scope, listOfMaterialsServices, listApprovalStatusServices, cardServices, $location){
+    function TabCtrl($scope, $uibModal, listOfMaterialsServices, listApprovalStatusServices, cardServices, $location){
         var obj = $location.search();//#?v1=p1
         console.log(obj);//obj.v1
 
@@ -13,6 +13,30 @@
         cardServices.getCard();
 
         $scope.setTab = function (tabId) {
+
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'tab/modalContent.html',
+                controller: 'ModalInstanceCtrl',
+                size: 'sm',
+                resolve: {
+                    title: "Сообщение",
+                    text: "dflkgjkldjglkdjflkg?",
+                    ok: "okkk",
+                    items: function () {
+                        return 'ok';//$scope.items;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+            }, function () {
+                //$log.info('Modal dismissed at: ' + new Date());
+            });
+
+
+
             $scope.tab = tabId;
 
             switch (tabId){
@@ -34,4 +58,24 @@
             return $scope.tab === tabId;
         };
     }
+
+    /*************************************/
+
+    //https://angular-ui.github.io/bootstrap/#/modal
+    angular.module('vendor.view').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
+
+        //$scope.items = items;
+        //$scope.selected = {
+        //    item: $scope.items[0]
+        //};
+
+        $scope.ok = function () {
+            $uibModalInstance.close($scope.selected.item);
+        };
+
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+    });
+
 })();
