@@ -4,6 +4,9 @@
         <li ng-class="{active:isSet('card')}"><a href ng-click="setTab('card')" data-toggle="tab">Карточка</a></li>
         <li ng-class="{active:isSet('list-materials')}"><a href ng-click="setTab('list-materials')" data-toggle="tab">Карточка</a></li>
         <li ng-class="{active:isSet('list-approval-status')}"><a href ng-click="setTab('list-approval-status')" data-toggle="tab">Оценка соответствия</a></li>
+        <li ng-class="{active:isSet('scar')}"><a href ng-click="setTab('scar')" data-toggle="tab">SCAR</a></li>
+        <li ng-class="{active:isSet('risk-assessment')}"><a href ng-click="setTab('risk-assessment')" data-toggle="tab">risk-assessment</a></li>
+        <li ng-class="{active:isSet('history')}"><a href ng-click="setTab('history')" data-toggle="tab">history</a></li>
     </ul>
 
     <div class="tab-content">
@@ -15,6 +18,15 @@
         </div>
         <div ng-class="{active:isSet('list-approval-status')}" class="tab-pane">
             <div list-approval-status-dir></div>
+        </div>
+        <div ng-class="{active:isSet('scar')}" class="tab-pane">
+            <div scar-dir></div>
+        </div>
+        <div ng-class="{active:isSet('risk-assessment')}" class="tab-pane">
+            <div risk-assessment-dir></div>
+        </div>
+        <div ng-class="{active:isSet('history')}" class="tab-pane">
+            <div history-dir></div>
         </div>
     </div>
 </div>

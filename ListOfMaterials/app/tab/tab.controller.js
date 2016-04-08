@@ -3,9 +3,11 @@
     angular.module("vendor.view")
         .controller("TabCtrl", TabCtrl);
 
-    TabCtrl.$inject = ['$scope', '$uibModal', 'ListOfMaterialsServices', 'ListApprovalStatusServices', 'CardServices', '$location'];
+    TabCtrl.$inject = ['$scope', '$uibModal', 'ListOfMaterialsServices', 'ListApprovalStatusServices', 'CardServices',
+        '$location', 'SCARServices', 'RiskAssessmentServices', 'HistoryServices'];
 
-    function TabCtrl($scope, $uibModal, listOfMaterialsServices, listApprovalStatusServices, cardServices, $location){
+    function TabCtrl($scope, $uibModal, listOfMaterialsServices, listApprovalStatusServices, cardServices,
+                     $location, sCARServices, riskAssessmentServices, historyServices){
         var obj = $location.search();//#?v1=p1
         console.log(obj);//obj.v1
 
@@ -14,28 +16,38 @@
 
         $scope.setTab = function (tabId) {
 
-            var modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: 'tab/modalContent.html',
-                controller: 'ModalInstanceCtrl',
-                size: 'sm',
-                resolve: {
-                    title: "Сообщение",
-                    text: "dflkgjkldjglkdjflkg?",
-                    ok: "okkk",
-                    items: function () {
-                        return 'ok';//$scope.items;
+            if(tabId === $scope.tab){
+                return;
+            }
+
+            //если уходим с вкладки не сохранив
+            if($scope.tab === 'card' && !cardServices.model.pageMode.pageView) {
+
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'tab/modalContent.html',
+                    controller: 'ModalInstanceCtrl',
+                    size: 'sm',
+                    backdrop: 'static',
+                    keyboard: false,
+                    resolve: {
+                        params: function () {
+                            return {
+                                title: "Сообщение",
+                                text: "Сохранить изменения?",
+                                ok: "Да",
+                                cancel: "Отменить "
+                            }
+                        }
                     }
-                }
-            });
+                });
 
-            modalInstance.result.then(function (selectedItem) {
-                $scope.selected = selectedItem;
-            }, function () {
-                //$log.info('Modal dismissed at: ' + new Date());
-            });
-
-
+                modalInstance.result.then(function (selectedItem) {
+                    //$scope.selected = selectedItem;
+                }, function () {
+                    //$log.info('Modal dismissed at: ' + new Date());
+                });
+            }
 
             $scope.tab = tabId;
 
@@ -51,6 +63,15 @@
                 case "list-approval-status":
                     listApprovalStatusServices.getApprovalStatusList();
                     break;
+                case "scar":
+                    sCARServices.getSCARList();
+                    break;
+                case "risk-assessment":
+                    riskAssessmentServices.getRiskAssessment();
+                    break;
+                case "history":
+                    historyServices.getHistoryList();
+                    break;
             };
         };
 
@@ -62,15 +83,12 @@
     /*************************************/
 
     //https://angular-ui.github.io/bootstrap/#/modal
-    angular.module('vendor.view').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
+    angular.module('vendor.view').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, params) {
 
-        //$scope.items = items;
-        //$scope.selected = {
-        //    item: $scope.items[0]
-        //};
+        $scope.params = params;
 
         $scope.ok = function () {
-            $uibModalInstance.close($scope.selected.item);
+            $uibModalInstance.close('ok');
         };
 
         $scope.cancel = function () {
