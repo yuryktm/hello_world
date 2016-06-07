@@ -15,7 +15,7 @@
         cardServices.getCard();
 
         $scope.setTab = function (tabId) {
-
+            return;
             if(tabId === $scope.tab){
                 return;
             }
