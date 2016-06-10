@@ -7,6 +7,7 @@
         <li ng-class="{active:isSet('scar')}"><a href ng-click="setTab('scar')" data-toggle="tab">SCAR</a></li>
         <li ng-class="{active:isSet('risk-assessment')}"><a href ng-click="setTab('risk-assessment')" data-toggle="tab">risk-assessment</a></li>
         <li ng-class="{active:isSet('history')}"><a href ng-click="setTab('history')" data-toggle="tab">history</a></li>
+        <li ng-class="{active:isSet('test')}"><a href ng-click="setTab('test')" data-toggle="tab">test</a></li>
     </ul>
 
     <div class="tab-content">
@@ -27,6 +28,9 @@
         </div>
         <div ng-class="{active:isSet('history')}" class="tab-pane">
             <div history-dir></div>
+        </div>
+        <div ng-class="{active:isSet('test')}" class="tab-pane">
+            <div test-dir></div>
         </div>
     </div>
 </div>

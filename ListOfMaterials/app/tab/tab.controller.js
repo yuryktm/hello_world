@@ -4,10 +4,10 @@
         .controller("TabCtrl", TabCtrl);
 
     TabCtrl.$inject = ['$scope', '$uibModal', 'ListOfMaterialsServices', 'ListApprovalStatusServices', 'CardServices',
-        '$location', 'SCARServices', 'RiskAssessmentServices', 'HistoryServices'];
+        '$location', 'SCARServices', 'RiskAssessmentServices', 'HistoryServices', 'TESTServices'];
 
     function TabCtrl($scope, $uibModal, listOfMaterialsServices, listApprovalStatusServices, cardServices,
-                     $location, sCARServices, riskAssessmentServices, historyServices){
+                     $location, sCARServices, riskAssessmentServices, historyServices, tESTServices ){
         var obj = $location.search();//#?v1=p1
         console.log(obj);//obj.v1
 
@@ -15,7 +15,7 @@
         cardServices.getCard();
 
         $scope.setTab = function (tabId) {
-            return;
+
             if(tabId === $scope.tab){
                 return;
             }
@@ -72,6 +72,10 @@
                 case "history":
                     historyServices.getHistoryList();
                     break;
+                case "test":
+                    tESTServices.getTESTList();
+                    break;
+
             };
         };
 
