@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Визард 1</title>
+
+    <script type="text/javascript" src="https://code.angularjs.org/1.5.9/angular.min.js"></script>
+
+    <!--Angular-Wizard-->
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/angular.wizard/latest/angular-wizard.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/angular.wizard/latest/angular-wizard.min.css">
+
+    <script src="../Angular-Wizard/app.js"></script>
+
+</head>
+
+<body ng-cloak ng-controller="MyController">
+
+
+    <!--Angular-Wizard-->
+    <wizard on-finish="finishedWizard()">
+        <wz-step wz-title="Starting">
+            <h1>This is the first step</h1>
+            <p>Here you can use whatever you want. You can use other directives, binding, etc.</p>
+            <input type="submit" wz-next value="Continue" />
+        </wz-step>
+        <wz-step wz-title="Continuing">
+            <h1>Continuing</h1>
+            <p>You have continued here!</p>
+            <input type="submit" wz-next value="Go on" />
+        </wz-step>
+        <wz-step wz-title="More steps">
+            <p>Even more steps!!</p>
+            <input type="submit" wz-next value="Finish now" />
+        </wz-step>
+    </wizard>
+
+</body>
+</html>

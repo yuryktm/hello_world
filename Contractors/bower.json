@@ -1,0 +1,10 @@
+{
+  "name": "Contractors",
+  "version": "0.0.1",
+  "authors": ["Yury"],
+  "dependencies": {
+    "angular": "latest",
+    "angular-resource": "latest",
+    "bootstrap": "latest"
+  }
+}
