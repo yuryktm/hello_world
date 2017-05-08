@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "authors": ["Yury"],
   "dependencies": {
-    "angular": "*",
-    "bootstrap": "*",
-    "angular-bootstrap-file-field": "*"
+    "angular": "latest",
+    "bootstrap": "latest",
+    "angular-bootstrap-file-field": "latest",
+    "angular-ui-bootstrap": "latest"
   }
 }
