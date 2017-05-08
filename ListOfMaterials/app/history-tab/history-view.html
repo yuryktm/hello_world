@@ -1,0 +1,33 @@
+<div ng-controller="HistoryCtrl">
+    <div style="padding: 10px;">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in model.historyList track by $index">
+                <td>
+                    {{item}}
+                </td>
+                <td>
+                    {{item}}
+                </td>
+                <td>
+                    {{item}}
+                </td>
+                <td>
+                    <a href="{{item}}" target="_blank">{{item}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+

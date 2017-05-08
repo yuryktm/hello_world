@@ -1,0 +1,27 @@
+<div style="padding: 5px 1px 1px 1px;" ng-controller="TabCtrl">
+
+    <div>
+        <label>Активная версия:&nbsp;</label>
+        <label>1</label>
+    <div/>
+    <div>
+        <label>ID контрагента:&nbsp;</label>
+        <label>2426</label>
+    </div>
+
+    <!--табы-->
+    <ul class="nav nav-tabs">
+        <li ng-class="{active:isSet('info')}"><a href ng-click="setTab('info')" data-toggle="tab">Информация</a></li>
+        <li ng-class="{active:isSet('others')}"><a href ng-click="setTab('others')" data-toggle="tab">Прочее</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div ng-class="{active:isSet('info')}" class="tab-pane">
+            <div info-dir></div>
+        </div>
+        <div ng-class="{active:isSet('others')}" class="tab-pane">
+            <div others-dir></div>
+        </div>
+    </div>
+</div>
+

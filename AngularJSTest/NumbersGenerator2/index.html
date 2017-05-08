@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="number-generators.view">
+<head>
+    <meta charset="UTF-8">
+    <title>Number Generators 2</title>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://code.angularjs.org/1.5.9/angular.min.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.5.9/angular-resource.min.js"></script>
+
+    <script src="../NumbersGenerator2/app.js"></script>
+</head>
+
+<body ng-cloak ng-controller="NumberGeneratorsCtrl">
+
+
+    <div style="margin: 20px">
+
+        <div>
+            <button ng-click="vm.btnAdd()">Add</button>
+            <input type="text" {{vm.searchField}}>
+            <button ng-click="vm.btnSearch()">Search</button>
+        <div>
+
+
+        <div>
+            <table class="table table-bordered">
+
+                <thead>
+                    <tr>
+                        <th>Col 1</th>
+                        <th>Col 2</th>
+                        <th>Col 3</th>
+                        <th>Col 1</th>
+                        <th>Col 2</th>
+                        <th>Col 3</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="row in vm.tableList track by $index"  ng-click="row.isEditing = true">
+
+                        <td>
+                            <span ng-show="!row.isEditing" class="editable-text">{{row.code}}</span>
+                            <div ng-show="row.isEditing">
+                                <input type="text" name="name" ng-model="row.code"/>
+                            </div>
+                        </td>
+
+                        <td>
+                            {{row.description}}
+                        </td>
+
+                        <td>
+                            {{row.mask}}
+                        </td>
+
+                        <td>
+                            {{row.currentValue}}
+                        </td>
+
+                        <td>
+                            <input type="checkbox" ng-model="row.cyclic" />
+                        </td>
+
+                        <td>
+                            <button class="btn btn-default btn-sm" ng-click="row.isEditing = false; $event.stopPropagation();" ng-show="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+                            <button class="btn btn-danger btn-sm" ng-click="vm.btnDel(row)"><span class="glyphicon glyphicon-trash"></span></button>
+
+                            <button class="btn btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing"><span class="glyphicon glyphicon-pencil"></span></button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        <div>
+
+    </div>
+
+</body>
+</html>

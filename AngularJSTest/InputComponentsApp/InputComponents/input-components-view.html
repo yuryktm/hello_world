@@ -1,0 +1,26 @@
+<!--<div ng-repeat="(key, value) in $ctrl.vm.data.customPropertiesJson">-->
+    <!--<div ng-switch on="$ctrl.getItem(key).type">-->
+
+        <!--<div ng-switch-when="text">-->
+            <!--<text-comp value = "value" item = "$ctrl.getItem(key)"></text-comp>-->
+        <!--</div>-->
+
+    <!--</div>-->
+<!--</div>-->
+
+
+<div ng-repeat="item in $ctrl.vm.data.mandatoryFields">
+    <div ng-switch on="item.type">
+
+        <!--поле типа текст-->
+        <div ng-switch-when="text">
+            <text-comp value = "$ctrl.getValue(item.propertyId)" item = "item"></text-comp>
+        </div>
+
+        <!--поле типа сотрудник-->
+        <div ng-switch-when="employee">
+
+        </div>
+
+    </div>
+</div>

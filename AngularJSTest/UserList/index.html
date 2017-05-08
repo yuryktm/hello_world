@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="userListApp">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+
+    <link href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript" src="https://code.angularjs.org/1.5.9/angular.min.js"></script>
+
+    <!--ngTable-->
+    <!--http://ng-table.com-->
+    <link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+    <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+
+    <script src="../UserList/app.js"></script>
+
+</head>
+
+<body ng-cloak ng-controller="UserListCtrl as vm">
+
+    <p>{{ vm.userList[0].name }}</p>
+    <button ng-click="vm.btnClick()">Click</button>
+
+    <div style="margin: 20px">
+        <table ng-table="vm.tableParams" class="table" show-filter="true">
+            <tr ng-repeat="user in $data">
+                <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
+                    {{user.name}}</td>
+                <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
+                    {{user.age}}</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

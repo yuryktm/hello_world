@@ -1,0 +1,102 @@
+<div ng-controller="InfoCtrl">
+
+    <!--первая шапка-->
+    <table style="margin: 10px;">
+        <tbody>
+        <tr>
+            <td style="width: 250px;">
+                <label>Статус:</label>
+            </td>
+            <td>
+                <span">Не проверен</>&nbsp;
+                <button class="btn btn-default" ng-click="">Заблокировать</button>
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <label>Инициатор:</label>
+            </td>
+            <td>
+                <sapn><a>Администратор СЭД</a>, Администратор СЭД</sapn>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Дата создания:</label>
+            </td>
+            <td>
+                <span>19&nbsp;октября&nbsp;2015</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Дата следующей проверки:</label>
+            </td>
+            <td>
+                <span>dhsdfhsdfh</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <table style="margin: 10px;">
+        <tbody>
+        <tr>
+            <td>
+                <label>Головное юр. лицо:</label>
+            </td>
+            <td>
+                <div class="input-group">
+                    <input type="text" class="form-control input-sm" placeholder="Выбирите ..." ng-model="" readonly="readonly">
+                                  <span class="input-group-btn">
+                                      <!--add-->
+                                    <button class="btn btn-default btn-sm" title="Выбрать" ng-click="">
+                                        <span style="color: #265a88" class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                      <!--delete-->
+                                    <button class="btn btn-default btn-sm" title="Очистить" ng-click="">
+                                        <span class="glyphicon glyphicon-remove text-danger"></span>
+                                    </button>
+                                  </span>
+                </div>
+
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <!--<div style="padding: 10px;">-->
+        <!--<table class="table table-bordered">-->
+            <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>1</th>-->
+                <!--<th>2</th>-->
+                <!--<th>3</th>-->
+                <!--<th>4</th>-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+            <!--<tr ng-repeat="item in model.infoList track by $index">-->
+                <!--<td>-->
+                    <!--{{item}}-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--{{item}}-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--{{item}}-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<a href="{{item}}" target="_blank">{{item}}</a>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
+
+    <!--</div>-->
+</div>
+
+

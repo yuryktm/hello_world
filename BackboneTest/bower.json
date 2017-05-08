@@ -1,0 +1,19 @@
+{
+  "name": "my app",
+  "version": "0.0.1",
+  "description": "user list",
+  "authors": ["YS"],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/js/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "*",
+    "bootstrap": "*"
+  }
+}

@@ -1,0 +1,38 @@
+<script src="http://localhost:8080/res/evelopers/components/common/dictionary-util.js"></script>
+<script src="http://localhost:8080/res/evelopers/components/common/simple-dialog.js"></script>
+<script src="http://localhost:8080/res/evelopers/components/common/module/contractor-search.js"></script>
+<script src="http://localhost:8080/res/evelopers/components/common/preloader.js"></script>
+<script src="http://localhost:8080/res/evelopers/components/common/jquery.placeholder.js"></script>
+<script src="http://localhost:8080/res/evelopers/components/common/connection-util.js"></script>
+<script src="http://localhost:8080/res/evelopers/components/common/util.js"></script>
+
+<!--Для Основной бизнес-->
+<script src="http://localhost:8080/res/evelopers/components/common/module/metaguide-search.js"></script>
+<script src="http://localhost:8080/res/evelopers/components/common/rowexpansion-advanced.js"></script>
+<!--Список оповещаемых лиц-->
+<script src="http://localhost:8080/res/evelopers/components/common/module/employee-search.js"></script>
+<!--Адрес-->
+<script src="http://localhost:8080/res/evelopers/components/common/module/address-select-card.js"></script>
+
+<style>
+    .underlay {
+        position: relative !important;
+    }
+    /*.label {*/
+    /*font-weight: inherit;*/
+    /*}*/
+    /*.h3 {*/
+    /*font-size: 15px;*/
+    /*margin: 10px;*/
+    /*}*/
+
+</style>
+
+<button type="button" class="btn btn-success" ng-click="clickShowHolding()">Головное юр. лицо</button>
+<button type="button" class="btn btn-success" ng-click="clickShowBasicBusiness()">Основной бизнес</button>
+<button type="button" class="btn btn-success" ng-click="clickShowEmployee()">Список оповещаемых лиц</button>
+<button type="button" class="btn btn-success" ng-click="clickShowusedBy()">Используется</button>
+<button type="button" class="btn btn-success" ng-click="clickShowAddress()">Адреса</button>
+
+<input type="text" ng-model="model.text1"/>
+<input type="text" ng-model="model.text2"/>

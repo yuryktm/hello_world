@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="number-generators.view">
+<head>
+    <meta charset="UTF-8">
+    <title>Number Generators</title>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://code.angularjs.org/1.5.9/angular.min.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.5.9/angular-resource.min.js"></script>
+
+    <!--ngTable-->
+    <!--http://ng-table.com-->
+    <link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+    <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+
+    <script src="../NumbersGenerator/number-generators.js"></script>
+    <script src="../NumbersGenerator/number-generators.service.js"></script>
+
+
+</head>
+
+<body ng-cloak ng-controller="NumberGeneratorsCtrl as vm">
+
+
+    <div style="margin: 20px">
+        <button ng-click="vm.btnAdd()">Add</button>
+        <input type="text" {{vm.searchField}}>
+        <button ng-click="vm.btnSearch()">Search</button>
+
+        <table ng-table="vm.tableParams" class="table table-bordered table-hover table-condensed editable-table"
+               ng-form="vm.tableForm"  disable-filter="vm.isAdding" demo-tracked-table="vm.tableTracker">
+
+            <colgroup>
+                <col width="20%" />
+                <col width="20%" />
+                <col width="20%" />
+                <col width="20%" />
+                <col width="10%" />
+                <col width="10%" />
+            </colgroup>
+
+            <tr ng-repeat="row in $data" ng-click="vm.editRow(row)">
+
+                <td title="'Код'" filter="{ code: 'text'}" sortable="'code'">
+                    <span ng-show="!row.isEditing" class="editable-text">{{row.code}}</span>
+                    <div class="controls" ng-show="row.isEditing">
+                        <input type="text" name="name" ng-model="row.code" class="editable-input form-control input-sm"/>
+                    </div>
+                </td>
+
+                <td title="'Описание'" sortable="'description'">
+                    {{row.description}}
+                </td>
+
+                <td title="'Маска'" sortable="'mask'">
+                    {{row.mask}}
+                </td>
+
+                <td title="'Последнее значение'" sortable="'currentValue'">
+                    {{row.currentValue}}
+                </td>
+
+                <td title="'Цикличный'">
+                    <input type="checkbox" ng-model="row.cyclic" />
+                </td>
+
+                <td>
+                    <button class="btn btn-default btn-sm" ng-click="row.isEditing = false; $event.stopPropagation()" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+                    <button class="btn btn-danger btn-sm" ng-click="vm.btnDel(row); $event.stopPropagation()" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash"></span></button>
+                    <button class="btn btn-success btn-sm" ng-click="vm.btnSave(row); $event.stopPropagation()" ng-if="row.isEditing"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+                </td>
+
+            </tr>
+        </table>
+
+
+
+
+            <!--<div class="col-md-6" ng-controller="demoController as demo">-->
+                <!--<h3>ngTable directive</h3>-->
+                <!--<table ng-table="demo.tableParams" class="table table-bordered table-hover table-condensed editable-table demoTable"-->
+                       <!--ng-form="demo.tableForm" disable-filter="demo.isAdding" demo-tracked-table="demo.tableTracker">-->
+                    <!--<colgroup>-->
+                        <!--<col width="65%" />-->
+                        <!--<col width="10%" />-->
+                        <!--<col width="10%" />-->
+                        <!--<col width="15%" />-->
+                    <!--</colgroup>-->
+                    <!--<tr ng-repeat="row in $data" ng-form="rowForm" demo-tracked-table-row="row">-->
+
+                        <!--<td title="'Name'" filter="{name: 'text'}" sortable="'name'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="name" demo-tracked-table-cell>-->
+                            <!--<span ng-switch-default class="editable-text">{{row.name}}</span>-->
+                            <!--<div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">-->
+                                <!--<input type="text" name="name" ng-model="row.name" class="editable-input form-control input-sm" required />-->
+                            <!--</div>-->
+                        <!--</td>-->
+
+                        <!--<td title="'Age'" filter="{age: 'number'}" sortable="'age'" ng-switch="row.isEditing" ng-class="age.$dirty ? 'bg-warning' : ''" ng-form="age" demo-tracked-table-cell>-->
+                            <!--<span ng-switch-default class="editable-text">{{row.age}}</span>-->
+                            <!--<div class="controls" ng-class="age.$invalid && age.$dirty ? 'has-error' : ''" ng-switch-when="true">-->
+                                <!--<input type="number" name="age" ng-model="row.age" class="editable-input form-control input-sm" required/>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--<td title="'Money'" filter="{money: 'number'}" sortable="'money'" ng-switch="row.isEditing" ng-class="money.$dirty ? 'bg-warning' : ''" ng-form="money" demo-tracked-table-cell>-->
+                            <!--<span ng-switch-default class="editable-text">{{row.money}}</span>-->
+                            <!--<div class="controls" ng-class="money.$invalid && money.$dirty ? 'has-error' : ''" ng-switch-when="true">-->
+                                <!--<input type="number" name="money" ng-model="row.money" class="editable-input form-control input-sm" required/>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<button class="btn btn-primary btn-sm" ng-click="demo.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid"><span class="glyphicon glyphicon-ok"></span></button>-->
+                            <!--<button class="btn btn-default btn-sm" ng-click="demo.cancel(row, rowForm)" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>-->
+                            <!--<button class="btn btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing"><span class="glyphicon glyphicon-pencil"></span></button>-->
+                            <!--<button class="btn btn-danger btn-sm" ng-click="demo.del(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash"></span></button>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                <!--</table>-->
+            <!--</div>-->
+
+
+
+
+
+    </div>
+
+</body>
+</html>
