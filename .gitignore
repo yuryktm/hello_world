@@ -10,3 +10,7 @@ TestYUI/bower_components/
 TestGraph/bower_components/
 testVendors/bower_components/
 RequireJsAngularJsTest/libs/
+Angular2Test/node_modules/rxjs/add/operator/min.js.map
+Angular2Test/node_modules/rxjs/add/operator/pairwise.js.map
+Angular2Test/node_modules/rxjs/
+Angular2Test/node_modules/
